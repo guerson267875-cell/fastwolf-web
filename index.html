@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FastWolf — Diseño de Marca y Web | Tu marca lista en 7 días</title>
+<meta name="description" content="Le damos a tu negocio la imagen completa para verse serio: logo, manual de marca, brochure, tarjetas, página web y contenido para redes. Todo en 7 días, precio cerrado: S/ 500. Perú.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:title" content="FastWolf — Tu marca lista en 7 días">
+<meta property="og:description" content="Paquete completo de identidad + web por S/ 500: logo, manual de marca, brochure, tarjetas, página web y contenido para redes.">
+<meta property="og:image" content="https://guerson267875-cell.github.io/fastwolf-web/assets/og-image.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,600;0,700;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noche:#04181D; --noche2:#072229; --ambar:#FFB22C; --cian:#30D6E8;
+    --hielo:#EAFCFF; --bruma:#8FC9D2; --verde:#1EC978; --verde2:#14A862;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Inter',sans-serif; background:var(--noche); color:var(--hielo); line-height:1.6; overflow-x:clip; }
+  img { max-width:100%; display:block; }
+  a { color:inherit; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 24px; }
+  h1,h2,h3 { font-family:'Exo 2',sans-serif; }
+
+  .btn-wsp {
+    display:inline-flex; align-items:center; gap:12px;
+    background:linear-gradient(135deg,var(--verde),var(--verde2));
+    color:#fff; font-weight:700; font-size:1.05rem;
+    padding:16px 32px; border-radius:999px; text-decoration:none;
+    box-shadow:0 0 34px rgba(30,201,120,.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-wsp:hover { transform:translateY(-2px); box-shadow:0 0 48px rgba(30,201,120,.55); }
+  .btn-wsp svg { width:22px; height:22px; flex:0 0 auto; }
+
+  /* HERO */
+  .hero {
+    position:relative; overflow:hidden;
+    background:
+      radial-gradient(ellipse at 85% 20%, rgba(255,178,44,.14), transparent 50%),
+      radial-gradient(ellipse at 10% 90%, rgba(48,214,232,.12), transparent 55%),
+      repeating-linear-gradient(0deg, transparent 0, transparent 79px, rgba(48,214,232,.05) 80px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 79px, rgba(48,214,232,.05) 80px),
+      var(--noche);
+    padding:36px 0 0;
+  }
+  .hero .wrap { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:40px; align-items:center; }
+  .hero-txt { padding:40px 0 70px; }
+  .hero-logo { width:280px; margin-bottom:44px; }
+  .hero h1 { font-size:clamp(2.4rem, 5.4vw, 4rem); font-weight:800; font-style:italic; line-height:1.05; color:#fff; }
+  .hero h1 em { font-style:italic; color:var(--ambar); }
+  .hero p.sub { font-size:1.15rem; color:var(--bruma); margin:22px 0 34px; max-width:32em; }
+  .hero p.sub b { color:var(--hielo); }
+  .hero-img { align-self:end; }
+  .hero-img img { width:100%; border-radius:20px 20px 0 0; box-shadow:0 -10px 60px rgba(255,178,44,.18); }
+  .mini { margin-top:18px; font-size:.9rem; color:var(--bruma); }
+
+  /* PAQUETE */
+  section { padding:80px 0; }
+  .kicker { font-size:.85rem; font-weight:700; letter-spacing:4px; color:var(--cian); text-transform:uppercase; }
+  h2 { font-size:clamp(1.7rem, 3.6vw, 2.5rem); font-weight:800; font-style:italic; color:#fff; margin:10px 0 14px; }
+  .lead { color:var(--bruma); max-width:44em; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px; margin-top:40px; }
+  .card {
+    background:var(--noche2); border:1px solid rgba(48,214,232,.18);
+    border-radius:16px; padding:26px 22px;
+  }
+  .card .n { font-family:'Exo 2',sans-serif; font-weight:800; font-style:italic; font-size:1.5rem; color:var(--ambar); }
+  .card h3 { font-size:1.06rem; color:#fff; margin:8px 0 6px; }
+  .card p { font-size:.9rem; color:var(--bruma); }
+
+  .priceband {
+    margin-top:44px; background:var(--noche2);
+    border:2px solid rgba(255,178,44,.7); border-radius:20px;
+    padding:34px 38px; display:flex; flex-wrap:wrap; align-items:center; gap:28px;
+    box-shadow:0 0 50px rgba(255,178,44,.12);
+  }
+  .priceband .big { font-family:'Exo 2',sans-serif; font-weight:800; font-style:italic; font-size:3.4rem; color:var(--ambar); line-height:1; }
+  .priceband .det { flex:1; min-width:240px; color:var(--bruma); font-size:.96rem; }
+  .priceband .det b { color:var(--hielo); }
+
+  /* PROCESO */
+  .alt { background:var(--noche2); }
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:40px; }
+  .step { border-left:3px solid var(--ambar); padding:4px 0 4px 18px; }
+  .step b { font-family:'Exo 2',sans-serif; color:#fff; display:block; margin-bottom:4px; }
+  .step span { font-size:.92rem; color:var(--bruma); }
+
+  /* VIDEO + GALERÍA */
+  .showcase { display:grid; grid-template-columns:280px minmax(0,1fr); gap:44px; align-items:center; }
+  .phone {
+    border:10px solid #0b2c35; border-radius:34px; overflow:hidden;
+    box-shadow:0 20px 70px rgba(0,0,0,.5), 0 0 40px rgba(48,214,232,.12);
+  }
+  .phone video { width:100%; display:block; }
+  .gal { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; }
+  .gal img { width:100%; border-radius:14px; border:1px solid rgba(48,214,232,.2); }
+
+  /* FAQ */
+  details {
+    background:var(--noche2); border:1px solid rgba(48,214,232,.16);
+    border-radius:14px; padding:18px 22px; margin-top:14px;
+  }
+  summary { font-weight:600; color:#fff; cursor:pointer; font-size:1.02rem; }
+  details p { margin-top:10px; color:var(--bruma); font-size:.95rem; }
+
+  /* CTA FINAL + FOOTER */
+  .final { text-align:center; }
+  .final h2 { margin-bottom:26px; }
+  footer { border-top:1px solid rgba(48,214,232,.15); padding:36px 0 110px; }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; }
+  footer img { width:170px; }
+  footer p { font-size:.85rem; color:var(--bruma); }
+
+  .float-wsp {
+    position:fixed; right:20px; bottom:20px; z-index:50;
+    width:62px; height:62px; border-radius:50%;
+    background:linear-gradient(135deg,var(--verde),var(--verde2));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 30px rgba(0,0,0,.45), 0 0 26px rgba(30,201,120,.5);
+  }
+  .float-wsp svg { width:32px; height:32px; }
+
+  @media (max-width:820px) {
+    .hero .wrap { grid-template-columns:minmax(0,1fr); }
+    .hero-img { order:-1; margin:0 -24px; }
+    .hero-img img { border-radius:0; }
+    .hero-txt { padding:8px 0 56px; }
+    .hero-logo { width:220px; margin-bottom:30px; }
+    .showcase { grid-template-columns:minmax(0,1fr); }
+    .phone { max-width:280px; margin:0 auto; }
+    section { padding:60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-txt">
+      <img class="hero-logo" src="assets/logo.png" alt="FastWolf — Diseño de Marca y Web">
+      <h1>Tu marca lista<br>en <em>7 días</em>.</h1>
+      <p class="sub">Logo, manual de marca, brochure, tarjetas, página web y contenido para tus redes. <b>Paquete completo por S/ 500</b>, precio cerrado, sin sorpresas.</p>
+      <a class="btn-wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20de%20S%2F%20500" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.9 14.9 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+        Escríbenos al WhatsApp
+      </a>
+      <p class="mini">Respondemos el mismo día · Atendemos todo el Perú a distancia</p>
+    </div>
+    <div class="hero-img"><img src="assets/hero-moto.jpg" alt="La mascota de FastWolf sobre una moto de luz"></div>
+  </div>
+</header>
+
+<!-- PAQUETE -->
+<section id="paquete">
+  <div class="wrap">
+    <div class="kicker">El paquete completo</div>
+    <h2>Todo lo que tu negocio necesita para verse serio</h2>
+    <p class="lead">Cinco entregables que se diseñan juntos, con una sola dirección de marca — no piezas sueltas de proveedores distintos.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Manual de marca + logo</h3><p>Logo profesional en todas sus versiones, colores y tipografías definidas. Archivos editables incluidos.</p></div>
+      <div class="card"><div class="n">02</div><h3>Brochure</h3><p>Díptico listo para imprimir, en PDF de imprenta y versión ligera para WhatsApp.</p></div>
+      <div class="card"><div class="n">03</div><h3>Tarjetas de presentación</h3><p>Arte listo para imprenta, tiro y retiro, con código QR opcional.</p></div>
+      <div class="card"><div class="n">04</div><h3>Página web</h3><p>Una página que se ve perfecta en celular, con botón de WhatsApp directo y mapa.</p></div>
+      <div class="card"><div class="n">05</div><h3>Contenido para redes</h3><p>3 posts de Instagram con diseño y textos, o 1 video publicitario. Tú eliges.</p></div>
+    </div>
+    <div class="priceband">
+      <div><div style="font-size:.9rem; color:var(--bruma); letter-spacing:2px; font-weight:700;">TODO POR</div><div class="big">S/ 500</div></div>
+      <div class="det"><b>Precio cerrado.</b> 50% al inicio y 50% contra entrega · <b>2 rondas de cambios incluidas</b> · Entrega en 7 a 10 días hábiles · Todos los archivos quedan tuyos.</div>
+      <a class="btn-wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20de%20S%2F%20500" target="_blank" rel="noopener">Quiero mi paquete</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="alt" id="proceso">
+  <div class="wrap">
+    <div class="kicker">Cómo trabajamos</div>
+    <h2>Del primer mensaje a tu marca completa</h2>
+    <div class="steps">
+      <div class="step"><b>1 · Arranque</b><span>Adelanto del 50% y un cuestionario de 14 preguntas que te toma 10 minutos.</span></div>
+      <div class="step"><b>2 · Propuestas</b><span>En 2 días ves 2 o 3 propuestas de logo distintas y eliges la dirección.</span></div>
+      <div class="step"><b>3 · Afinado</b><span>Dos rondas de observaciones para dejar todo exactamente como quieres.</span></div>
+      <div class="step"><b>4 · Entrega</b><span>En 7 a 10 días recibes la carpeta completa, con archivos finales y editables.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MUESTRA -->
+<section id="muestra">
+  <div class="wrap">
+    <div class="kicker">Así se ve nuestro trabajo</div>
+    <h2>Nuestra propia marca es la muestra</h2>
+    <p class="lead">Todo lo que ves aquí — el lobo, el logo, este sitio y el video — lo diseñamos con el mismo paquete que te ofrecemos.</p>
+    <div class="showcase" style="margin-top:40px;">
+      <div class="phone">
+        <video src="assets/video-fastwolf.mp4" poster="assets/hero-moto.jpg" controls playsinline preload="metadata"></video>
+      </div>
+      <div class="gal">
+        <img src="assets/mascota.jpg" alt="Diseño de personaje FastWolf">
+        <img src="assets/corriendo.jpg" alt="Mascota FastWolf corriendo en pista de neón">
+        <img src="assets/post-marketplace.jpg" alt="Pieza publicitaria del paquete FastWolf" style="grid-column:1/-1;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt" id="faq">
+  <div class="wrap">
+    <div class="kicker">Preguntas frecuentes</div>
+    <h2>Lo que todos preguntan</h2>
+    <details open>
+      <summary>¿Y si no me gusta el logo?</summary>
+      <p>Por eso la primera entrega trae 2 o 3 propuestas distintas, no una sola. Eliges la que más te guste y la afinamos juntos con las 2 rondas de cambios. Nadie se queda con algo que no le gusta.</p>
+    </details>
+    <details>
+      <summary>¿Qué necesito darte para empezar?</summary>
+      <p>Un cuestionario corto (14 preguntas, 10 minutos), tus datos de contacto y las fotos que tengas de tu negocio. Si no tienes fotos, usamos imágenes de banco con licencia comercial.</p>
+    </details>
+    <details>
+      <summary>¿La web incluye dominio y hosting?</summary>
+      <p>Tu página se publica gratis con un subdominio (tunegocio.netlify.app). Si quieres tu propio .com, te lo cotizamos aparte y queda a tu nombre — siempre.</p>
+    </details>
+    <details>
+      <summary>¿Cómo se paga?</summary>
+      <p>50% al inicio (S/ 250) y 50% contra entrega, por Yape, Plin o transferencia. Las primeras propuestas las ves en 2 días, así que rapidito sabes con quién trabajas.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final">
+  <div class="wrap">
+    <h2>¿Empezamos hoy?</h2>
+    <a class="btn-wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20empezar%20mi%20paquete%20de%20marca" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.9 14.9 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+      WhatsApp +51 957 577 494
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo.png" alt="FastWolf">
+    <p>FastWolf — Diseño de Marca y Web · Perú<br>WhatsApp +51 957 577 494 · © 2026</p>
+  </div>
+</footer>
+
+<a class="float-wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20de%20S%2F%20500" target="_blank" rel="noopener" aria-label="Escríbenos al WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.9 14.9 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+</a>
+
+</body>
+</html>

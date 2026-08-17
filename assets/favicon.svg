@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- FastWolf · isotipo · para fondos oscuros -->
+  <path d="M24,10 L46,24 L28,44 Z" fill="#FFB22C"/>
+  <path d="M96,10 L74,24 L92,44 Z" fill="#FFB22C"/>
+  <path fill-rule="evenodd" d="M28,38 L60,26 L92,38 L88,64 L60,94 L32,64 Z M53,72 L67,72 L60,83 Z" fill="#FFB22C"/>
+  <path d="M37,49 L52,55 L50,62 L35,55 Z" fill="#FFFFFF"/>
+  <path d="M83,49 L68,55 L70,62 L85,55 Z" fill="#FFFFFF"/>
+</svg>
