@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FastWolf — Entrevista al cliente</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,600;0,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noche:#04181D; --noche2:#072229; --panel:#0A2A33; --ambar:#FFB22C; --cian:#30D6E8;
+    --hielo:#EAFCFF; --bruma:#8FC9D2; --verde:#1EC978; --rojo:#FF5A66; --linea:rgba(48,214,232,.18);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--noche); color:var(--hielo); line-height:1.55; padding-bottom:120px; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 20px; }
+  header { padding:34px 0 10px; }
+  header img { width:200px; }
+  h1 { font-family:'Exo 2',sans-serif; font-weight:800; font-style:italic; font-size:1.9rem; margin-top:18px; }
+  h1 em { font-style:italic; color:var(--ambar); }
+  .sub { color:var(--bruma); font-size:.95rem; margin-top:6px; }
+
+  .guide { background:var(--noche2); border:1px solid var(--linea); border-radius:14px; margin:22px 0; }
+  .guide summary { padding:16px 20px; font-weight:700; color:var(--cian); cursor:pointer; font-size:.98rem; }
+  .guide .gbody { padding:0 20px 18px; font-size:.92rem; color:var(--bruma); }
+  .guide .gbody p { margin-bottom:10px; }
+  .guide b { color:var(--hielo); }
+  .jerga { width:100%; border-collapse:collapse; margin:8px 0 4px; font-size:.88rem; }
+  .jerga td { padding:5px 8px; border-bottom:1px solid var(--linea); }
+  .jerga td:first-child { color:var(--rojo); }
+  .jerga td:last-child { color:var(--verde); }
+
+  section.blk { background:var(--noche2); border:1px solid var(--linea); border-radius:16px; padding:24px 22px; margin:18px 0; }
+  .blkHead { display:flex; align-items:baseline; gap:12px; margin-bottom:6px; }
+  .blkNum { font-family:'Exo 2',sans-serif; font-weight:800; font-style:italic; font-size:1.3rem; color:var(--ambar); }
+  .blkTitle { font-family:'Exo 2',sans-serif; font-weight:700; font-size:1.15rem; }
+  .blkNote { font-size:.85rem; color:var(--bruma); margin-bottom:14px; }
+
+  .q { margin:16px 0; }
+  .q label { display:block; font-weight:600; font-size:.95rem; margin-bottom:6px; }
+  .q label .n { color:var(--ambar); font-weight:700; }
+  .hint { font-size:.82rem; color:var(--bruma); margin-top:5px; }
+  .hint b { color:var(--cian); font-weight:600; }
+  input[type=text], textarea, select {
+    width:100%; background:var(--panel); border:1px solid var(--linea); border-radius:10px;
+    color:var(--hielo); font-family:'Inter',sans-serif; font-size:.95rem; padding:11px 13px; outline:none;
+  }
+  input[type=text]:focus, textarea:focus { border-color:var(--cian); }
+  textarea { min-height:64px; resize:vertical; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:560px){ .row2 { grid-template-columns:1fr; } }
+
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  .chip { border:1px solid var(--linea); background:var(--panel); color:var(--bruma); border-radius:999px; padding:8px 16px; font-size:.88rem; cursor:pointer; user-select:none; }
+  .chip.on { background:var(--ambar); color:var(--noche); border-color:var(--ambar); font-weight:700; }
+
+  .radio { display:flex; gap:10px; flex-wrap:wrap; margin-top:4px; }
+  .radio .chip { flex:1; text-align:center; min-width:180px; }
+
+  .warnPrint { background:rgba(255,178,44,.1); border:1px solid rgba(255,178,44,.5); border-radius:10px; padding:10px 14px; font-size:.86rem; color:var(--ambar); margin-bottom:14px; }
+
+  .flag { display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--linea); cursor:pointer; }
+  .flag:last-of-type { border-bottom:none; }
+  .flag input { margin-top:4px; accent-color:var(--rojo); width:16px; height:16px; flex:0 0 auto; }
+  .flag b { font-size:.92rem; }
+  .flag span { display:block; font-size:.82rem; color:var(--bruma); }
+  #flagAlert { display:none; background:rgba(255,90,102,.12); border:1px solid var(--rojo); color:var(--rojo); border-radius:10px; padding:12px 14px; font-size:.9rem; font-weight:600; margin-top:12px; }
+
+  .check { display:flex; gap:10px; align-items:center; padding:7px 0; cursor:pointer; font-size:.92rem; }
+  .check input { accent-color:var(--verde); width:16px; height:16px; }
+
+  .bar {
+    position:fixed; bottom:0; left:0; right:0; z-index:40;
+    background:rgba(4,24,29,.96); border-top:1px solid var(--linea); backdrop-filter:blur(8px);
+  }
+  .bar .wrap { display:flex; gap:10px; align-items:center; padding:12px 20px; flex-wrap:wrap; }
+  .btn { font-family:'Inter',sans-serif; font-weight:700; font-size:.9rem; border:none; border-radius:999px; padding:12px 20px; cursor:pointer; }
+  .btn.primary { background:linear-gradient(135deg,var(--verde),#14A862); color:#fff; }
+  .btn.ghost { background:var(--panel); color:var(--bruma); border:1px solid var(--linea); }
+  .btn.danger { background:none; color:var(--rojo); border:1px solid rgba(255,90,102,.4); }
+  #saveState { font-size:.78rem; color:var(--bruma); margin-left:auto; }
+  #progress { font-size:.78rem; color:var(--cian); }
+
+  @media print {
+    body { background:#fff; color:#111; padding:0; }
+    .bar, .guide, .hint, .warnPrint { display:none !important; }
+    section.blk { border:1px solid #ccc; background:#fff; }
+    input[type=text], textarea, select { border:1px solid #999; background:#fff; color:#111; }
+    .chip { border:1px solid #999; color:#111; background:#fff; }
+    .chip.on { background:#ddd; font-weight:700; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="assets/logo.png" alt="FastWolf">
+    <h1>Entrevista al <em>cliente</em></h1>
+    <div class="sub">Habilidad 01 · Conduce la conversación, llena esto mientras respondes, y al final copia el brief completo. Se guarda solo en este navegador.</div>
+  </header>
+
+  <details class="guide">
+    <summary>📖 Cómo se conduce esta entrevista (léelo antes de tu primera vez)</summary>
+    <div class="gbody">
+      <p><b>Por WhatsApp, en 3 tandas.</b> Nunca mandes las 14 preguntas de golpe: máximo 3 o 4 por mensaje (atajos <b>/brief1</b>, <b>/brief2</b>, <b>/brief3</b>). Espera las respuestas de una tanda antes de mandar la siguiente.</p>
+      <p><b>Habla en español normal, cero jerga de diseño:</b></p>
+      <table class="jerga">
+        <tr><td>✗ tipografía</td><td>✓ tipo de letra</td></tr>
+        <tr><td>✗ paleta de colores</td><td>✓ los colores de tu marca</td></tr>
+        <tr><td>✗ brief</td><td>✓ cuestionario</td></tr>
+        <tr><td>✗ isotipo / imagotipo</td><td>✓ el símbolo del logo</td></tr>
+        <tr><td>✗ moodboard / referencias</td><td>✓ marcas que te gustan</td></tr>
+      </table>
+      <p><b>Si la respuesta es vaga, repregunta con ejemplos concretos.</b> "¿Bonito cómo? ¿Elegante como una joyería, o con colores vivos como una juguería?" Cada pregunta de este formulario trae su repregunta sugerida.</p>
+      <p><b>Todo dato que va impreso se verifica repitiéndoselo al cliente.</b> Un teléfono mal copiado en 200 tarjetas es una ronda de cambios gratis… para ti.</p>
+    </div>
+  </details>
+
+  <!-- CONTROL -->
+  <section class="blk">
+    <div class="blkHead"><span class="blkNum">00</span><span class="blkTitle">Datos de control</span></div>
+    <div class="row2">
+      <div class="q"><label>Fecha</label><input type="text" id="f_fecha" placeholder="17/08/2026"></div>
+      <div class="q"><label>Quién entrevista</label><input type="text" id="f_entrevistador" placeholder="Guerson"></div>
+      <div class="q"><label>Nombre del cliente (persona)</label><input type="text" id="f_cliente" placeholder="Con quién estás hablando"></div>
+      <div class="q"><label>WhatsApp del cliente</label><input type="text" id="f_wsp" placeholder="9__ ___ ___"></div>
+    </div>
+    <div class="q"><label>¿Cómo llegó?</label>
+      <div class="radio" id="f_canal">
+        <span class="chip" data-v="Anuncio pagado">Anuncio pagado</span>
+        <span class="chip" data-v="Marketplace">Marketplace</span>
+        <span class="chip" data-v="Grupo de Facebook">Grupo de FB</span>
+        <span class="chip" data-v="Recomendación">Recomendación</span>
+        <span class="chip" data-v="Otro">Otro</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOQUE A -->
+  <section class="blk">
+    <div class="blkHead"><span class="blkNum">01</span><span class="blkTitle">El negocio</span></div>
+    <div class="blkNote">Tanda 1 por WhatsApp (atajo /brief1). Aquí sale la dirección de todo el proyecto.</div>
+    <div class="q"><label><span class="n">1.</span> Nombre exacto del negocio</label><input type="text" id="q1" placeholder="Tal cual debe leerse en el logo">
+      <div class="hint"><b>Verifica:</b> mayúsculas, tildes, "y/&", ¿lleva "SAC"? Repíteselo escrito.</div></div>
+    <div class="q"><label><span class="n">2.</span> Frase o eslogan (si tiene)</label><input type="text" id="q2" placeholder="Vacío si no tiene — no lo inventes aún">
+      <div class="hint"><b>Si duda:</b> "¿Hay algo que siempre le dices a tus clientes? Eso puede ser tu frase."</div></div>
+    <div class="q"><label><span class="n">3.</span> ¿A qué se dedica? (2–3 líneas)</label><textarea id="q3" placeholder="Qué vende, a quién, desde cuándo"></textarea>
+      <div class="hint"><b>Si es vago:</b> "¿Qué es lo que MÁS te compran o te piden?"</div></div>
+    <div class="q"><label><span class="n">4.</span> Cliente ideal (edad, zona, qué busca)</label><textarea id="q4" placeholder="Ej.: señoras 30-50 de Cayma que buscan tortas personalizadas"></textarea>
+      <div class="hint"><b>Si dice "todos":</b> "Si pudieras clonar a tu mejor cliente, ¿cómo es esa persona?"</div></div>
+    <div class="q"><label><span class="n">5.</span> ¿Qué lo diferencia de su competencia?</label><textarea id="q5"></textarea>
+      <div class="hint"><b>Si no sabe:</b> "¿Por qué te eligen a ti tus caseros en vez de irse al de la esquina?"</div></div>
+  </section>
+
+  <!-- BLOQUE B -->
+  <section class="blk">
+    <div class="blkHead"><span class="blkNum">02</span><span class="blkTitle">La imagen</span></div>
+    <div class="blkNote">Tanda 2 (atajo /brief2). Traduce todo a español normal.</div>
+    <div class="q"><label><span class="n">6.</span> ¿Logo o color previo que quiere conservar?</label><textarea id="q6" placeholder="Pide que mande el archivo si existe"></textarea></div>
+    <div class="q"><label><span class="n">7.</span> 2–3 marcas cuyo estilo le gustan</label><textarea id="q7" placeholder="De cualquier rubro. Pide capturas o nombres"></textarea>
+      <div class="hint"><b>Ojo:</b> "me gusta" ≠ "cópialo". Pregunta QUÉ le gusta de cada una: ¿los colores, la letra, lo simple?</div></div>
+    <div class="q"><label><span class="n">8.</span> Colores que quiere evitar sí o sí</label><input type="text" id="q8"></div>
+    <div class="q"><label><span class="n">9.</span> Estilo</label>
+      <div class="chips" id="q9">
+        <span class="chip" data-v="Elegante">Elegante</span>
+        <span class="chip" data-v="Moderno">Moderno</span>
+        <span class="chip" data-v="Juvenil">Juvenil</span>
+        <span class="chip" data-v="Clásico">Clásico</span>
+        <span class="chip" data-v="Minimalista">Minimalista</span>
+        <span class="chip" data-v="Colorido">Colorido</span>
+      </div>
+      <div class="hint"><b>Si duda entre dos,</b> marca ambos — las 2-3 propuestas de logo pueden explorar una dirección cada una.</div></div>
+  </section>
+
+  <!-- BLOQUE C -->
+  <section class="blk">
+    <div class="blkHead"><span class="blkNum">03</span><span class="blkTitle">Datos operativos</span></div>
+    <div class="blkNote">Tanda 3 (atajo /brief3).</div>
+    <div class="warnPrint">⚠️ Todo lo de este bloque VA IMPRESO. Verifica cada dato repitiéndoselo al cliente, dígito por dígito. Un error aquí cuesta una ronda gratis.</div>
+    <div class="q"><label><span class="n">10.</span> Teléfono / correo / dirección / horario</label><textarea id="q10" placeholder="Tal cual deben aparecer en tarjeta, brochure y web"></textarea></div>
+    <div class="q"><label><span class="n">11.</span> Redes sociales (usuarios exactos)</label><textarea id="q11" placeholder="@usuario de cada red, verificado"></textarea></div>
+    <div class="q"><label><span class="n">12.</span> RUC y razón social (si aplica)</label><input type="text" id="q12"></div>
+    <div class="q"><label><span class="n">13.</span> Fotos: ¿qué material tiene?</label><textarea id="q13" placeholder="¿Mandó fotos? ¿Calidad? ¿Hará falta banco de imágenes?"></textarea></div>
+    <div class="q"><label><span class="n">14.</span> Contenido de redes que elige</label>
+      <div class="radio" id="q14">
+        <span class="chip" data-v="3 posts de Instagram">3 posts de Instagram</span>
+        <span class="chip" data-v="1 video publicitario">1 video publicitario</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÑALES DE ALERTA -->
+  <section class="blk">
+    <div class="blkHead"><span class="blkNum">⚠️</span><span class="blkTitle">Señales de alerta</span></div>
+    <div class="blkNote">Marca las que aparezcan durante la conversación. No descalifican solas — pero 2 o más, y este cliente te va a costar más de lo que paga.</div>
+    <label class="flag"><input type="checkbox" class="fl" data-v="Se resiste al adelanto"><div><b>Se resiste al adelanto.</b><span>"Empecemos y después te pago", "¿y si mejor te pago todo al final?" — sin S/ 250 no se mueve nada. Nunca.</span></div></label>
+    <label class="flag"><input type="checkbox" class="fl" data-v="Minimiza el trabajo"><div><b>Minimiza el trabajo.</b><span>"Es algo rapidito, tú que sabes lo haces en una hora" — quien minimiza el trabajo, regateará el precio y las rondas.</span></div></label>
+    <label class="flag"><input type="checkbox" class="fl" data-v="No sabe qué vende ni a quién"><div><b>No sabe qué vende ni a quién.</b><span>Respuestas vacías en las preguntas 3–5. Sin negocio claro no hay marca posible: el proyecto se vuelve adivinanza infinita.</span></div></label>
+    <label class="flag"><input type="checkbox" class="fl" data-v="Quiere diseñar él, en goteo"><div><b>Quiere diseñar él, en goteo.</b><span>"Yo te voy corrigiendo sobre la marcha", "tengo buen ojo" — anuncio de cambios infinitos. Recuérdale la regla de las 2 rondas ANTES de cobrar.</span></div></label>
+    <label class="flag"><input type="checkbox" class="fl" data-v="Regateo con comparaciones irreales"><div><b>Regateo con comparaciones irreales.</b><span>"Mi sobrino lo hace a S/ 50", "en Fiverr está a $20" — que se lo haga el sobrino. El precio es cerrado.</span></div></label>
+    <label class="flag"><input type="checkbox" class="fl" data-v="Urgencia imposible"><div><b>Urgencia imposible.</b><span>"Lo necesito para el viernes" (y es miércoles). Plazos imposibles = trabajo mal pagado y cliente igual insatisfecho. El plazo es 7–10 días.</span></div></label>
+    <div id="flagAlert"></div>
+  </section>
+
+  <!-- MATERIAL PENDIENTE -->
+  <section class="blk">
+    <div class="blkHead"><span class="blkNum">📦</span><span class="blkTitle">Material pendiente</span></div>
+    <div class="blkNote">El reloj de los 7–10 días corre recién cuando TODO esto llegó. Díselo al cliente con estas palabras.</div>
+    <label class="check"><input type="checkbox" class="mat" data-v="Fotos del negocio en buena calidad"> Fotos del negocio en buena calidad</label>
+    <label class="check"><input type="checkbox" class="mat" data-v="Logo previo (si existe)"> Logo previo (si existe)</label>
+    <label class="check"><input type="checkbox" class="mat" data-v="Textos: servicios y precios"> Textos: lista de servicios/productos y precios</label>
+    <label class="check"><input type="checkbox" class="mat" data-v="RUC / razón social confirmados"> RUC / razón social confirmados</label>
+    <label class="check"><input type="checkbox" class="mat" data-v="Adelanto S/ 250 recibido"> <b>Adelanto S/ 250 recibido ✅</b></label>
+    <div class="q" style="margin-top:12px;"><label>Fecha comprometida para completar el material</label><input type="text" id="f_fechamat" placeholder="¿Cuándo quedó en mandarlo?"></div>
+  </section>
+
+  <!-- DIRECCIÓN CREATIVA -->
+  <section class="blk">
+    <div class="blkHead"><span class="blkNum">🎨</span><span class="blkTitle">Dirección creativa (lo llena el entrevistador)</span></div>
+    <div class="q"><label>Resumen en 3 líneas: ¿qué marca hay que hacer?</label><textarea id="f_direccion" placeholder="Ej.: pastelería familiar en Cayma, estilo elegante-cálido, evitar rosado chicle, competir contra informales — transmitir 'hecho con cuidado'"></textarea></div>
+    <div class="q"><label>Próximo paso</label>
+      <div class="radio" id="f_paso">
+        <span class="chip" data-v="Mandar cotización / cerrar">Mandar cierre</span>
+        <span class="chip" data-v="Cobrar adelanto">Cobrar adelanto</span>
+        <span class="chip" data-v="Esperando material">Esperando material</span>
+        <span class="chip" data-v="Arrancar diseño">Arrancar diseño ✅</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="bar">
+  <div class="wrap">
+    <button class="btn primary" onclick="copiarBrief()">📋 Copiar brief</button>
+    <button class="btn ghost" onclick="descargarBrief()">⬇️ Descargar .txt</button>
+    <button class="btn ghost" onclick="window.print()">🖨️ Imprimir</button>
+    <button class="btn danger" onclick="nuevaEntrevista()">🗑️ Nueva</button>
+    <span id="progress"></span>
+    <span id="saveState"></span>
+  </div>
+</div>
+
+<script>
+const KEY = 'fw-entrevista-v1';
+const $ = id => document.getElementById(id);
+const textIds = ['f_fecha','f_entrevistador','f_cliente','f_wsp','q1','q2','q3','q4','q5','q6','q7','q8','q10','q11','q12','q13','f_fechamat','f_direccion'];
+const chipGroups = { f_canal:{multi:false}, q9:{multi:true}, q14:{multi:false}, f_paso:{multi:false} };
+
+function collect() {
+  const d = { chips:{}, flags:[], mats:[] };
+  textIds.forEach(id => d[id] = $(id).value);
+  for (const g in chipGroups) d.chips[g] = [...document.querySelectorAll('#'+g+' .chip.on')].map(c => c.dataset.v);
+  document.querySelectorAll('.fl:checked').forEach(c => d.flags.push(c.dataset.v));
+  document.querySelectorAll('.mat:checked').forEach(c => d.mats.push(c.dataset.v));
+  return d;
+}
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(collect()));
+  $('saveState').textContent = 'Guardado ' + new Date().toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'});
+  progreso(); alertaFlags();
+}
+function load() {
+  const raw = localStorage.getItem(KEY); if (!raw) { progreso(); return; }
+  try {
+    const d = JSON.parse(raw);
+    textIds.forEach(id => { if (d[id] !== undefined) $(id).value = d[id]; });
+    for (const g in chipGroups) (d.chips?.[g]||[]).forEach(v => { const c = document.querySelector('#'+g+' .chip[data-v="'+v+'"]'); if (c) c.classList.add('on'); });
+    document.querySelectorAll('.fl').forEach(c => c.checked = (d.flags||[]).includes(c.dataset.v));
+    document.querySelectorAll('.mat').forEach(c => c.checked = (d.mats||[]).includes(c.dataset.v));
+  } catch(e) {}
+  progreso(); alertaFlags();
+}
+function progreso() {
+  const qs = ['q1','q2','q3','q4','q5','q6','q7','q8','q10','q11','q12','q13'];
+  let done = qs.filter(id => $(id).value.trim()).length;
+  if (document.querySelector('#q9 .chip.on')) done++;
+  if (document.querySelector('#q14 .chip.on')) done++;
+  $('progress').textContent = done + '/14 preguntas';
+}
+function alertaFlags() {
+  const n = document.querySelectorAll('.fl:checked').length;
+  const el = $('flagAlert');
+  if (n >= 2) { el.style.display = 'block'; el.textContent = '🚨 ' + n + ' señales activas: este cliente te va a costar caro. Si sigues, hazlo SOLO con adelanto cobrado, la regla de 2 rondas por escrito, y sin apuros de plazo.'; }
+  else if (n === 1) { el.style.display = 'block'; el.textContent = '⚠️ 1 señal activa: atento. Deja la regla de las 2 rondas y el adelanto clarísimos antes de avanzar.'; }
+  else el.style.display = 'none';
+}
+function briefTexto() {
+  const d = collect();
+  const chip = g => (d.chips[g]||[]).join(', ') || '—';
+  const v = id => (d[id]||'').trim() || '—';
+  return [
+'════════════════════════════════',
+'FASTWOLF — BRIEF DE CLIENTE',
+'════════════════════════════════',
+'Fecha: ' + v('f_fecha') + '   Entrevistó: ' + v('f_entrevistador'),
+'Cliente: ' + v('f_cliente') + '   WhatsApp: ' + v('f_wsp'),
+'Canal: ' + chip('f_canal'),
+'',
+'── EL NEGOCIO ──',
+'1. Nombre exacto: ' + v('q1'),
+'2. Eslogan: ' + v('q2'),
+'3. A qué se dedica: ' + v('q3'),
+'4. Cliente ideal: ' + v('q4'),
+'5. Diferencial: ' + v('q5'),
+'',
+'── LA IMAGEN ──',
+'6. Logo/color previo: ' + v('q6'),
+'7. Marcas que le gustan: ' + v('q7'),
+'8. Colores a evitar: ' + v('q8'),
+'9. Estilo: ' + chip('q9'),
+'',
+'── OPERATIVO (datos verificados, van impresos) ──',
+'10. Contacto/horario: ' + v('q10'),
+'11. Redes: ' + v('q11'),
+'12. RUC/razón social: ' + v('q12'),
+'13. Fotos/material: ' + v('q13'),
+'14. Redes elige: ' + chip('q14'),
+'',
+'── SEÑALES DE ALERTA (' + d.flags.length + ') ──',
+d.flags.length ? d.flags.map(f => '⚠️ ' + f).join('\n') : 'Ninguna ✅',
+'',
+'── MATERIAL RECIBIDO ──',
+d.mats.length ? d.mats.map(m => '✔ ' + m).join('\n') : '(nada aún)',
+'Fecha comprometida material: ' + v('f_fechamat'),
+'',
+'── DIRECCIÓN CREATIVA ──',
+v('f_direccion'),
+'',
+'Próximo paso: ' + chip('f_paso'),
+'════════════════════════════════'
+  ].join('\n');
+}
+async function copiarBrief() {
+  const t = briefTexto();
+  try { await navigator.clipboard.writeText(t); toast('📋 Brief copiado — pégalo en tu chat o en Drive'); }
+  catch(e) {
+    const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); ta.remove(); toast('📋 Brief copiado');
+  }
+}
+function descargarBrief() {
+  const d = collect();
+  const nombre = 'brief-' + ((d.q1||'cliente').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-') || 'cliente') + '.txt';
+  const blob = new Blob([briefTexto()], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = nombre; a.click();
+  URL.revokeObjectURL(a.href);
+}
+function nuevaEntrevista() {
+  if (!confirm('¿Borrar todo y empezar una entrevista nueva? Copia o descarga el brief antes.')) return;
+  localStorage.removeItem(KEY);
+  textIds.forEach(id => $(id).value = '');
+  document.querySelectorAll('.chip.on').forEach(c => c.classList.remove('on'));
+  document.querySelectorAll('.fl, .mat').forEach(c => c.checked = false);
+  progreso(); alertaFlags(); $('saveState').textContent = '';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function toast(msg) {
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = 'position:fixed;top:18px;left:50%;transform:translateX(-50%);background:#1EC978;color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;z-index:99;font-size:.9rem;box-shadow:0 8px 30px rgba(0,0,0,.4)';
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2600);
+}
+document.querySelectorAll('input[type=text], textarea').forEach(el => el.addEventListener('input', save));
+document.querySelectorAll('.fl, .mat').forEach(el => el.addEventListener('change', save));
+for (const g in chipGroups) {
+  document.querySelectorAll('#'+g+' .chip').forEach(c => c.addEventListener('click', () => {
+    if (!chipGroups[g].multi) document.querySelectorAll('#'+g+' .chip').forEach(o => { if (o!==c) o.classList.remove('on'); });
+    c.classList.toggle('on'); save();
+  }));
+}
+if (!localStorage.getItem(KEY)) $('f_fecha').value = new Date().toLocaleDateString('es-PE');
+load();
+</script>
+</body>
+</html>
