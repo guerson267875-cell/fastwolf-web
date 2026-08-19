@@ -1,0 +1,322 @@
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Protocolo de Entrevista FastWolf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700;1,800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Protocolo del entrevistador · uso interno · tema único "papel" (colores explícitos a propósito) */
+  :root {
+    --papel: #ffffff;
+    --tinta: #132730;
+    --noche: #04181D;
+    --ambar: #E89A10;
+    --bruma: #456A73;
+    --linea: #C9D6D9;
+    --panel: #F3F8F9;
+    --fondo-pantalla: #E9EEEF;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--fondo-pantalla);
+    color: var(--tinta);
+    font-family: 'Inter','Segoe UI',system-ui,sans-serif;
+    font-size: 13.5px; line-height: 1.55;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .hoja {
+    background: var(--papel);
+    max-width: 820px; margin: 28px auto; padding: 46px 56px 40px;
+    box-shadow: 0 2px 24px rgba(4,24,29,.14);
+  }
+
+  header {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding-bottom: 13px; border-bottom: 2px solid var(--noche);
+  }
+  .marca { display: flex; align-items: center; gap: 10px; }
+  .marca svg.iso { height: 34px; width: auto; display: block; }
+  .wordmark {
+    font-family: 'Exo 2','Segoe UI',sans-serif; font-style: italic; font-weight: 800;
+    font-size: 21px; letter-spacing: -.5px; color: var(--noche); line-height: 1;
+  }
+  .wordmark span { color: var(--ambar); }
+  .tag { font-size: 9px; font-weight: 600; letter-spacing: 3px; color: var(--bruma); margin-top: 3px; }
+  .doc-meta { text-align: right; font-size: 10.5px; color: var(--bruma); line-height: 1.5; }
+
+  h1 {
+    font-family: 'Exo 2','Segoe UI',sans-serif; font-style: italic; font-weight: 800;
+    font-size: 26px; color: var(--noche); margin: 24px 0 6px; text-wrap: balance;
+  }
+  .bajada { margin: 0 0 22px; color: var(--bruma); }
+
+  /* etapas con riel numerado — la numeración es la secuencia real de la reunión */
+  .etapa { display: flex; gap: 16px; margin: 0 0 8px; }
+  .num {
+    flex: none; width: 34px; height: 34px; border: 2px solid var(--noche);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Exo 2','Segoe UI',sans-serif; font-style: italic; font-weight: 800;
+    font-size: 16px; color: var(--noche);
+  }
+  .riel { flex: none; width: 34px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .riel .cable { width: 2px; flex: 1; background: var(--linea); margin-top: 4px; }
+  .cuerpo { flex: 1; padding-bottom: 18px; min-width: 0; }
+  .cuerpo h2 {
+    font-family: 'Exo 2','Segoe UI',sans-serif; font-style: italic; font-weight: 800;
+    font-size: 16.5px; color: var(--noche); margin: 5px 0 2px;
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  }
+  .tiempo { font-family: 'Inter','Segoe UI',sans-serif; font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--ambar); }
+  .cuerpo p { margin: 6px 0; }
+  .cuerpo strong { color: var(--noche); }
+
+  .guion {
+    background: var(--panel); border: 1px solid var(--linea);
+    padding: 10px 14px; margin: 8px 0; font-size: 12.5px;
+  }
+  .guion .etq { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: var(--ambar); display: block; margin-bottom: 3px; }
+  .guion em { color: var(--tinta); }
+
+  .check { margin: 8px 0 0; padding: 0; list-style: none; font-size: 12.5px; }
+  .check li { display: block; position: relative; padding-left: 22px; margin: 4px 0; }
+  .casilla { width: 12px; height: 12px; border: 1.6px solid var(--noche); display: inline-block; }
+  .check li > .casilla { position: absolute; left: 0; top: 3px; }
+
+  .prep {
+    border: 1px solid var(--linea); padding: 12px 16px; margin: 0 0 24px;
+    break-inside: avoid;
+  }
+  .prep h3, .post h3 {
+    margin: 0 0 6px; font-size: 10.5px; font-weight: 700; letter-spacing: 2.2px;
+    color: var(--bruma); text-transform: uppercase;
+  }
+
+  .qr-bloque {
+    display: flex; gap: 16px; align-items: center; margin: 10px 0;
+    border: 1px solid var(--linea); padding: 12px 16px; background: var(--papel);
+    break-inside: avoid;
+  }
+  .qr-caja { flex: none; width: 96px; height: 96px; background: #fff; padding: 8px; border: 1px solid var(--linea); }
+  .qr-caja svg { width: 100%; height: 100%; display: block; }
+  .qr-texto { font-size: 12px; min-width: 0; overflow-wrap: break-word; }
+  .qr-texto a { color: var(--noche); font-weight: 600; }
+
+  .alerta {
+    border-left: 3px solid var(--ambar); padding: 2px 0 2px 12px;
+    font-size: 12px; margin: 10px 0;
+  }
+
+  table.plazos { width: 100%; border-collapse: collapse; margin: 10px 0 4px; font-size: 12px; }
+  table.plazos th {
+    text-align: left; font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--bruma); border-bottom: 2px solid var(--noche); padding: 5px 8px 5px 0;
+  }
+  table.plazos td { border-bottom: 1px solid var(--linea); padding: 7px 8px 7px 0; vertical-align: top; }
+  table.plazos td.regla { color: var(--bruma); white-space: nowrap; }
+  .campo { display: inline-block; border-bottom: 1px dotted var(--bruma); min-width: 95px; height: 1.1em; }
+
+  .reglas-obs {
+    background: var(--panel); border: 1px solid var(--linea);
+    padding: 12px 16px; margin: 12px 0; break-inside: avoid; font-size: 12.5px;
+  }
+  .reglas-obs .etq { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: var(--ambar); display: block; margin-bottom: 5px; }
+  .reglas-obs ul { margin: 0; padding-left: 18px; }
+  .reglas-obs li { margin: 3px 0; }
+  .reglas-obs strong { color: var(--noche); }
+
+  .post {
+    border: 1.6px solid var(--noche); padding: 14px 18px; margin-top: 8px; break-inside: avoid;
+  }
+
+  footer {
+    margin-top: 34px; padding-top: 10px; border-top: 1px solid var(--linea);
+    display: flex; justify-content: space-between; gap: 12px;
+    font-size: 10px; color: var(--bruma);
+  }
+
+  @media (max-width: 560px) {
+    .hoja { padding: 26px 18px; margin: 0; }
+    .etapa { gap: 10px; }
+  }
+  @page { size: A4; margin: 14mm 15mm; }
+  @media print {
+    html, body { background: var(--papel); }
+    body { font-size: 10pt; }
+    .hoja { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+    .etapa-5 { break-before: page; }
+    a { color: inherit; }
+  }
+</style>
+
+<div class="hoja">
+  <header>
+    <div class="marca">
+      <svg class="iso" viewBox="20 6 80 92" role="img" aria-label="Isotipo FastWolf">
+        <path d="M24,10 L46,24 L28,44 Z" fill="#04181D"/>
+        <path d="M96,10 L74,24 L92,44 Z" fill="#04181D"/>
+        <path fill-rule="evenodd" d="M28,38 L60,26 L92,38 L88,64 L60,94 L32,64 Z M53,72 L67,72 L60,83 Z" fill="#04181D"/>
+        <path d="M37,49 L52,55 L50,62 L35,55 Z" fill="#E89A10"/>
+        <path d="M83,49 L68,55 L70,62 L85,55 Z" fill="#E89A10"/>
+      </svg>
+      <div>
+        <div class="wordmark">Fast<span>Wolf</span></div>
+        <div class="tag">DISEÑO DE MARCA Y WEB</div>
+      </div>
+    </div>
+    <div class="doc-meta">
+      Protocolo de entrevista · <strong>uso interno</strong><br>
+      WhatsApp +51 957 577 494
+    </div>
+  </header>
+
+  <h1>Protocolo de Entrevista</h1>
+  <p class="bajada">Guía del entrevistador, de la apertura al cierre de compromisos. Duración objetivo: <strong>30–45 minutos</strong>. Cliente: <span class="campo" style="min-width:180px"></span> &nbsp; Fecha: <span class="campo"></span></p>
+
+  <div class="prep">
+    <h3>Antes de empezar — preparación</h3>
+    <ul class="check">
+      <li><span class="casilla"></span> Leí los mensajes previos: sé cómo se llama el negocio y a qué se dedica.</li>
+      <li><span class="casilla"></span> El adelanto de S/ 250 está cobrado. <em>(Si no, esta reunión cierra la venta — el proyecto no arranca sin adelanto, nunca.)</em></li>
+      <li><span class="casilla"></span> Tengo a mano: Acuerdo de Confidencialidad (PDF), Catálogo de Opciones y este protocolo.</li>
+      <li><span class="casilla"></span> Probé que el formulario de entrevista abre (QR de la etapa 3).</li>
+    </ul>
+  </div>
+
+  <!-- ETAPA 1 -->
+  <div class="etapa">
+    <div class="riel"><div class="num">1</div><div class="cable"></div></div>
+    <div class="cuerpo">
+      <h2>Apertura y presentación <span class="tiempo">2–3 MIN</span></h2>
+      <p>Preséntate con nombre propio y anuncia la agenda. Un cliente que sabe qué va a pasar se relaja y responde mejor.</p>
+      <div class="guion">
+        <span class="etq">GUION</span>
+        <em>"Hola, soy <strong>[tu nombre]</strong>, de FastWolf. Yo voy a acompañarte en la entrevista de tu marca. Es una conversación de unos 30–40 minutos: primero te hago unas preguntas sobre tu negocio, después eliges entre opciones de diseño que te voy a mostrar, y al final cerramos las fechas exactas de entrega. ¿Listo(a)?"</em>
+      </div>
+      <ul class="check">
+        <li><span class="casilla"></span> Me presenté con mi nombre y mi rol.</li>
+        <li><span class="casilla"></span> Anuncié la agenda y la duración.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ETAPA 2 -->
+  <div class="etapa">
+    <div class="riel"><div class="num">2</div><div class="cable"></div></div>
+    <div class="cuerpo">
+      <h2>Acuerdo de confidencialidad <span class="tiempo">3–5 MIN</span></h2>
+      <p>Muéstralo <strong>antes de la primera pregunta del negocio</strong> — es justo el momento en que el cliente duda cuánto contarte. Explícalo en simple y avisa que se le enviará para su firma.</p>
+      <div class="guion">
+        <span class="etq">GUION</span>
+        <em>"Antes de que me cuentes nada de tu negocio, esto es importante: nuestro <strong>Acuerdo de Confidencialidad</strong>. Todo lo que me digas —números, clientes, recetas, planes— queda protegido por escrito y solo se usa para tu proyecto. Lo firma FastWolf, lo firmo yo como tu entrevistador, y lo firmas tú. Ahorita te lo envío por WhatsApp para tu firma."</em>
+      </div>
+      <ul class="check">
+        <li><span class="casilla"></span> Mostré el acuerdo (en pantalla o impreso) y lo expliqué en simple.</li>
+        <li><span class="casilla"></span> Lo envié al cliente para su firma.</li>
+        <li><span class="casilla"></span> Definimos juntos la casilla de <strong>portafolio</strong> (cláusula quinta): ☐ autoriza &nbsp;☐ no autoriza.</li>
+      </ul>
+      <div class="alerta">Si el cliente quiere leerlo con calma, perfecto: se sigue con la entrevista y se confirma la firma <strong>antes de la primera entrega</strong>.</div>
+    </div>
+  </div>
+
+  <!-- ETAPA 3 -->
+  <div class="etapa">
+    <div class="riel"><div class="num">3</div><div class="cable"></div></div>
+    <div class="cuerpo">
+      <h2>La entrevista — el brief <span class="tiempo">15–25 MIN</span></h2>
+      <p>Se conduce con el <strong>formulario oficial</strong> (14 preguntas en 3 bloques: negocio, imagen, operativo). Ábrelo aquí:</p>
+      <div class="qr-bloque">
+        <div class="qr-caja"><svg viewBox="0 0 37 37" shape-rendering="crispEdges"><path d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM8 0h1v1h-1zM10 0h1v1h-1zM13 0h1v1h-1zM16 0h1v1h-1zM17 0h1v1h-1zM18 0h1v1h-1zM20 0h1v1h-1zM22 0h1v1h-1zM24 0h1v1h-1zM26 0h1v1h-1zM28 0h1v1h-1zM30 0h1v1h-1zM31 0h1v1h-1zM32 0h1v1h-1zM33 0h1v1h-1zM34 0h1v1h-1zM35 0h1v1h-1zM36 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h1v1h-1zM10 1h1v1h-1zM12 1h1v1h-1zM13 1h1v1h-1zM15 1h1v1h-1zM18 1h1v1h-1zM19 1h1v1h-1zM20 1h1v1h-1zM22 1h1v1h-1zM23 1h1v1h-1zM24 1h1v1h-1zM25 1h1v1h-1zM26 1h1v1h-1zM28 1h1v1h-1zM30 1h1v1h-1zM36 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM12 2h1v1h-1zM20 2h1v1h-1zM22 2h1v1h-1zM25 2h1v1h-1zM27 2h1v1h-1zM28 2h1v1h-1zM30 2h1v1h-1zM32 2h1v1h-1zM33 2h1v1h-1zM34 2h1v1h-1zM36 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM11 3h1v1h-1zM12 3h1v1h-1zM13 3h1v1h-1zM14 3h1v1h-1zM15 3h1v1h-1zM16 3h1v1h-1zM17 3h1v1h-1zM19 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM25 3h1v1h-1zM27 3h1v1h-1zM28 3h1v1h-1zM30 3h1v1h-1zM32 3h1v1h-1zM33 3h1v1h-1zM34 3h1v1h-1zM36 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM13 4h1v1h-1zM14 4h1v1h-1zM15 4h1v1h-1zM16 4h1v1h-1zM17 4h1v1h-1zM19 4h1v1h-1zM20 4h1v1h-1zM21 4h1v1h-1zM24 4h1v1h-1zM27 4h1v1h-1zM30 4h1v1h-1zM32 4h1v1h-1zM33 4h1v1h-1zM34 4h1v1h-1zM36 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM12 5h1v1h-1zM13 5h1v1h-1zM19 5h1v1h-1zM21 5h1v1h-1zM24 5h1v1h-1zM25 5h1v1h-1zM26 5h1v1h-1zM28 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM31 6h1v1h-1zM32 6h1v1h-1zM33 6h1v1h-1zM34 6h1v1h-1zM35 6h1v1h-1zM36 6h1v1h-1zM8 7h1v1h-1zM11 7h1v1h-1zM15 7h1v1h-1zM17 7h1v1h-1zM18 7h1v1h-1zM19 7h1v1h-1zM20 7h1v1h-1zM21 7h1v1h-1zM23 7h1v1h-1zM24 7h1v1h-1zM26 7h1v1h-1zM27 7h1v1h-1zM28 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM11 8h1v1h-1zM13 8h1v1h-1zM16 8h1v1h-1zM19 8h1v1h-1zM20 8h1v1h-1zM26 8h1v1h-1zM27 8h1v1h-1zM30 8h1v1h-1zM33 8h1v1h-1zM35 8h1v1h-1zM36 8h1v1h-1zM0 9h1v1h-1zM1 9h1v1h-1zM2 9h1v1h-1zM3 9h1v1h-1zM7 9h1v1h-1zM8 9h1v1h-1zM9 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM16 9h1v1h-1zM17 9h1v1h-1zM28 9h1v1h-1zM31 9h1v1h-1zM35 9h1v1h-1zM2 10h1v1h-1zM3 10h1v1h-1zM6 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM15 10h1v1h-1zM17 10h1v1h-1zM22 10h1v1h-1zM25 10h1v1h-1zM28 10h1v1h-1zM31 10h1v1h-1zM32 10h1v1h-1zM34 10h1v1h-1zM0 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM14 11h1v1h-1zM15 11h1v1h-1zM18 11h1v1h-1zM19 11h1v1h-1zM22 11h1v1h-1zM23 11h1v1h-1zM24 11h1v1h-1zM25 11h1v1h-1zM28 11h1v1h-1zM29 11h1v1h-1zM30 11h1v1h-1zM34 11h1v1h-1zM3 12h1v1h-1zM6 12h1v1h-1zM10 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM16 12h1v1h-1zM17 12h1v1h-1zM23 12h1v1h-1zM24 12h1v1h-1zM25 12h1v1h-1zM29 12h1v1h-1zM30 12h1v1h-1zM32 12h1v1h-1zM33 12h1v1h-1zM34 12h1v1h-1zM35 12h1v1h-1zM36 12h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM7 13h1v1h-1zM10 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM13 13h1v1h-1zM15 13h1v1h-1zM16 13h1v1h-1zM19 13h1v1h-1zM24 13h1v1h-1zM27 13h1v1h-1zM28 13h1v1h-1zM30 13h1v1h-1zM31 13h1v1h-1zM32 13h1v1h-1zM33 13h1v1h-1zM35 13h1v1h-1zM36 13h1v1h-1zM1 14h1v1h-1zM4 14h1v1h-1zM6 14h1v1h-1zM7 14h1v1h-1zM9 14h1v1h-1zM11 14h1v1h-1zM12 14h1v1h-1zM13 14h1v1h-1zM14 14h1v1h-1zM16 14h1v1h-1zM17 14h1v1h-1zM18 14h1v1h-1zM19 14h1v1h-1zM20 14h1v1h-1zM22 14h1v1h-1zM24 14h1v1h-1zM25 14h1v1h-1zM29 14h1v1h-1zM30 14h1v1h-1zM32 14h1v1h-1zM34 14h1v1h-1zM35 14h1v1h-1zM0 15h1v1h-1zM2 15h1v1h-1zM5 15h1v1h-1zM8 15h1v1h-1zM11 15h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM15 15h1v1h-1zM16 15h1v1h-1zM17 15h1v1h-1zM18 15h1v1h-1zM20 15h1v1h-1zM21 15h1v1h-1zM22 15h1v1h-1zM23 15h1v1h-1zM24 15h1v1h-1zM26 15h1v1h-1zM28 15h1v1h-1zM31 15h1v1h-1zM32 15h1v1h-1zM36 15h1v1h-1zM0 16h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM6 16h1v1h-1zM8 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM16 16h1v1h-1zM17 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM23 16h1v1h-1zM25 16h1v1h-1zM26 16h1v1h-1zM27 16h1v1h-1zM33 16h1v1h-1zM34 16h1v1h-1zM36 16h1v1h-1zM0 17h1v1h-1zM1 17h1v1h-1zM2 17h1v1h-1zM3 17h1v1h-1zM7 17h1v1h-1zM10 17h1v1h-1zM12 17h1v1h-1zM14 17h1v1h-1zM16 17h1v1h-1zM17 17h1v1h-1zM19 17h1v1h-1zM20 17h1v1h-1zM21 17h1v1h-1zM25 17h1v1h-1zM27 17h1v1h-1zM29 17h1v1h-1zM30 17h1v1h-1zM33 17h1v1h-1zM35 17h1v1h-1zM36 17h1v1h-1zM2 18h1v1h-1zM4 18h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM7 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1zM15 18h1v1h-1zM16 18h1v1h-1zM17 18h1v1h-1zM19 18h1v1h-1zM22 18h1v1h-1zM24 18h1v1h-1zM25 18h1v1h-1zM26 18h1v1h-1zM27 18h1v1h-1zM29 18h1v1h-1zM30 18h1v1h-1zM31 18h1v1h-1zM32 18h1v1h-1zM35 18h1v1h-1zM36 18h1v1h-1zM0 19h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM8 19h1v1h-1zM9 19h1v1h-1zM10 19h1v1h-1zM13 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM19 19h1v1h-1zM23 19h1v1h-1zM24 19h1v1h-1zM27 19h1v1h-1zM28 19h1v1h-1zM31 19h1v1h-1zM33 19h1v1h-1zM35 19h1v1h-1zM1 20h1v1h-1zM3 20h1v1h-1zM5 20h1v1h-1zM6 20h1v1h-1zM8 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM17 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM23 20h1v1h-1zM28 20h1v1h-1zM29 20h1v1h-1zM31 20h1v1h-1zM32 20h1v1h-1zM33 20h1v1h-1zM36 20h1v1h-1zM0 21h1v1h-1zM1 21h1v1h-1zM3 21h1v1h-1zM7 21h1v1h-1zM9 21h1v1h-1zM10 21h1v1h-1zM11 21h1v1h-1zM14 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM19 21h1v1h-1zM20 21h1v1h-1zM23 21h1v1h-1zM25 21h1v1h-1zM26 21h1v1h-1zM28 21h1v1h-1zM33 21h1v1h-1zM0 22h1v1h-1zM1 22h1v1h-1zM2 22h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM7 22h1v1h-1zM8 22h1v1h-1zM10 22h1v1h-1zM12 22h1v1h-1zM13 22h1v1h-1zM16 22h1v1h-1zM17 22h1v1h-1zM20 22h1v1h-1zM21 22h1v1h-1zM22 22h1v1h-1zM23 22h1v1h-1zM24 22h1v1h-1zM25 22h1v1h-1zM28 22h1v1h-1zM31 22h1v1h-1zM1 23h1v1h-1zM2 23h1v1h-1zM4 23h1v1h-1zM8 23h1v1h-1zM10 23h1v1h-1zM11 23h1v1h-1zM12 23h1v1h-1zM13 23h1v1h-1zM14 23h1v1h-1zM15 23h1v1h-1zM16 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM21 23h1v1h-1zM22 23h1v1h-1zM24 23h1v1h-1zM25 23h1v1h-1zM27 23h1v1h-1zM28 23h1v1h-1zM32 23h1v1h-1zM33 23h1v1h-1zM34 23h1v1h-1zM35 23h1v1h-1zM36 23h1v1h-1zM0 24h1v1h-1zM1 24h1v1h-1zM5 24h1v1h-1zM6 24h1v1h-1zM8 24h1v1h-1zM9 24h1v1h-1zM11 24h1v1h-1zM12 24h1v1h-1zM13 24h1v1h-1zM15 24h1v1h-1zM18 24h1v1h-1zM19 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM25 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM28 24h1v1h-1zM29 24h1v1h-1zM30 24h1v1h-1zM32 24h1v1h-1zM34 24h1v1h-1zM35 24h1v1h-1zM1 25h1v1h-1zM3 25h1v1h-1zM4 25h1v1h-1zM5 25h1v1h-1zM9 25h1v1h-1zM11 25h1v1h-1zM13 25h1v1h-1zM14 25h1v1h-1zM16 25h1v1h-1zM18 25h1v1h-1zM20 25h1v1h-1zM24 25h1v1h-1zM25 25h1v1h-1zM26 25h1v1h-1zM27 25h1v1h-1zM28 25h1v1h-1zM30 25h1v1h-1zM32 25h1v1h-1zM33 25h1v1h-1zM35 25h1v1h-1zM36 25h1v1h-1zM1 26h1v1h-1zM2 26h1v1h-1zM6 26h1v1h-1zM12 26h1v1h-1zM15 26h1v1h-1zM16 26h1v1h-1zM17 26h1v1h-1zM18 26h1v1h-1zM19 26h1v1h-1zM20 26h1v1h-1zM21 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM29 26h1v1h-1zM31 26h1v1h-1zM32 26h1v1h-1zM33 26h1v1h-1zM35 26h1v1h-1zM0 27h1v1h-1zM4 27h1v1h-1zM7 27h1v1h-1zM8 27h1v1h-1zM9 27h1v1h-1zM11 27h1v1h-1zM13 27h1v1h-1zM16 27h1v1h-1zM21 27h1v1h-1zM22 27h1v1h-1zM27 27h1v1h-1zM28 27h1v1h-1zM29 27h1v1h-1zM30 27h1v1h-1zM35 27h1v1h-1zM36 27h1v1h-1zM2 28h1v1h-1zM6 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM15 28h1v1h-1zM16 28h1v1h-1zM18 28h1v1h-1zM20 28h1v1h-1zM21 28h1v1h-1zM22 28h1v1h-1zM25 28h1v1h-1zM26 28h1v1h-1zM28 28h1v1h-1zM29 28h1v1h-1zM30 28h1v1h-1zM31 28h1v1h-1zM32 28h1v1h-1zM34 28h1v1h-1zM35 28h1v1h-1zM8 29h1v1h-1zM12 29h1v1h-1zM13 29h1v1h-1zM14 29h1v1h-1zM15 29h1v1h-1zM17 29h1v1h-1zM20 29h1v1h-1zM22 29h1v1h-1zM23 29h1v1h-1zM26 29h1v1h-1zM27 29h1v1h-1zM28 29h1v1h-1zM32 29h1v1h-1zM34 29h1v1h-1zM36 29h1v1h-1zM0 30h1v1h-1zM1 30h1v1h-1zM2 30h1v1h-1zM3 30h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM8 30h1v1h-1zM10 30h1v1h-1zM11 30h1v1h-1zM12 30h1v1h-1zM14 30h1v1h-1zM15 30h1v1h-1zM16 30h1v1h-1zM17 30h1v1h-1zM21 30h1v1h-1zM28 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM34 30h1v1h-1zM35 30h1v1h-1zM36 30h1v1h-1zM0 31h1v1h-1zM6 31h1v1h-1zM8 31h1v1h-1zM11 31h1v1h-1zM13 31h1v1h-1zM14 31h1v1h-1zM22 31h1v1h-1zM23 31h1v1h-1zM24 31h1v1h-1zM26 31h1v1h-1zM27 31h1v1h-1zM28 31h1v1h-1zM32 31h1v1h-1zM36 31h1v1h-1zM0 32h1v1h-1zM2 32h1v1h-1zM3 32h1v1h-1zM4 32h1v1h-1zM6 32h1v1h-1zM9 32h1v1h-1zM10 32h1v1h-1zM11 32h1v1h-1zM12 32h1v1h-1zM14 32h1v1h-1zM18 32h1v1h-1zM19 32h1v1h-1zM22 32h1v1h-1zM26 32h1v1h-1zM28 32h1v1h-1zM29 32h1v1h-1zM30 32h1v1h-1zM31 32h1v1h-1zM32 32h1v1h-1zM33 32h1v1h-1zM35 32h1v1h-1zM0 33h1v1h-1zM2 33h1v1h-1zM3 33h1v1h-1zM4 33h1v1h-1zM6 33h1v1h-1zM8 33h1v1h-1zM9 33h1v1h-1zM12 33h1v1h-1zM14 33h1v1h-1zM15 33h1v1h-1zM18 33h1v1h-1zM20 33h1v1h-1zM22 33h1v1h-1zM23 33h1v1h-1zM26 33h1v1h-1zM27 33h1v1h-1zM28 33h1v1h-1zM29 33h1v1h-1zM30 33h1v1h-1zM32 33h1v1h-1zM36 33h1v1h-1zM0 34h1v1h-1zM2 34h1v1h-1zM3 34h1v1h-1zM4 34h1v1h-1zM6 34h1v1h-1zM8 34h1v1h-1zM10 34h1v1h-1zM12 34h1v1h-1zM14 34h1v1h-1zM16 34h1v1h-1zM18 34h1v1h-1zM19 34h1v1h-1zM20 34h1v1h-1zM23 34h1v1h-1zM25 34h1v1h-1zM30 34h1v1h-1zM32 34h1v1h-1zM33 34h1v1h-1zM0 35h1v1h-1zM6 35h1v1h-1zM11 35h1v1h-1zM13 35h1v1h-1zM14 35h1v1h-1zM16 35h1v1h-1zM20 35h1v1h-1zM24 35h1v1h-1zM25 35h1v1h-1zM26 35h1v1h-1zM31 35h1v1h-1zM32 35h1v1h-1zM33 35h1v1h-1zM34 35h1v1h-1zM0 36h1v1h-1zM1 36h1v1h-1zM2 36h1v1h-1zM3 36h1v1h-1zM4 36h1v1h-1zM5 36h1v1h-1zM6 36h1v1h-1zM8 36h1v1h-1zM13 36h1v1h-1zM14 36h1v1h-1zM15 36h1v1h-1zM17 36h1v1h-1zM19 36h1v1h-1zM20 36h1v1h-1zM22 36h1v1h-1zM25 36h1v1h-1zM32 36h1v1h-1zM33 36h1v1h-1zM34 36h1v1h-1zM35 36h1v1h-1zM36 36h1v1h-1z" fill="#04181D"/></svg></div>
+        <div class="qr-texto">
+          <strong>Formulario de entrevista FastWolf</strong><br>
+          <a href="https://guerson267875-cell.github.io/fastwolf-web/entrevista.html">guerson267875-cell.github.io/fastwolf-web/entrevista.html</a><br>
+          Tiene las 14 preguntas, la guía de conducción y las señales de alerta. Se autoguarda mientras escribes.
+        </div>
+      </div>
+      <p><strong>Reglas de conducción:</strong></p>
+      <ul class="check">
+        <li><span class="casilla"></span> Máximo 3 preguntas por momento — es conversación, no interrogatorio.</li>
+        <li><span class="casilla"></span> Cero jerga de diseño: "colores", no "paleta"; "letra", no "tipografía".</li>
+        <li><span class="casilla"></span> Respuesta vaga → repreguntar con ejemplos ("¿elegante como banco o moderno como barbería?").</li>
+        <li><span class="casilla"></span> Todo dato que va impreso se verifica letra por letra: teléfono, correo, dirección, RUC.</li>
+        <li><span class="casilla"></span> Anoté el material pendiente que debe enviar el cliente (fotos, logo previo, textos).</li>
+      </ul>
+      <div class="alerta">Si aparecen <strong>2 o más señales de alerta</strong> del semáforo del formulario, avisar a FastWolf <strong>antes</strong> de comprometer fechas en la etapa 5.</div>
+    </div>
+  </div>
+
+  <!-- ETAPA 4 -->
+  <div class="etapa">
+    <div class="riel"><div class="num">4</div><div class="cable"></div></div>
+    <div class="cuerpo">
+      <h2>Catálogo de opciones <span class="tiempo">5–10 MIN</span></h2>
+      <p>Muestra el <strong>Catálogo de Opciones</strong> (carpeta `Entrevista/`). El cliente elige con los ojos; tú recomiendas primero según su rubro.</p>
+      <div class="guion">
+        <span class="etq">GUION</span>
+        <em>"Ahora lo bonito: vas a elegir cómo se ven tus piezas. Todas las opciones cuestan lo mismo dentro del paquete — no hay trampa, es solo elegir la que va con tu negocio. Para un negocio como el tuyo, yo iría por…"</em>
+      </div>
+      <ul class="check">
+        <li><span class="casilla"></span> Brochure elegido: formato, orientación y secciones.</li>
+        <li><span class="casilla"></span> Tarjeta elegida: modelo y, si lleva QR, a dónde apunta.</li>
+        <li><span class="casilla"></span> Contenido de redes definido: ☐ 3 posts de Instagram &nbsp;☐ 1 video publicitario.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ETAPA 5 -->
+  <div class="etapa etapa-5">
+    <div class="riel"><div class="num">5</div><div class="cable"></div></div>
+    <div class="cuerpo">
+      <h2>Compromisos y plazos <span class="tiempo">5 MIN</span></h2>
+      <p>Se llena <strong>con el cliente, en voz alta</strong>. Primero la regla de oro: <em>el reloj corre desde que él entrega su material completo</em>. Luego, fechas exactas — no "la otra semana", sino día y mes.</p>
+      <table class="plazos">
+        <tr><th>Hito</th><th>Regla del paquete</th><th>Fecha acordada</th></tr>
+        <tr><td>El cliente entrega su material completo (fotos, textos, RUC, logo previo)</td><td class="regla">día 0 — arranca el reloj</td><td><span class="campo"></span></td></tr>
+        <tr><td>Firma del Acuerdo de Confidencialidad</td><td class="regla">antes de la 1.ª entrega</td><td><span class="campo"></span></td></tr>
+        <tr><td>Primeras propuestas de logo (2 o 3)</td><td class="regla">día 2</td><td><span class="campo"></span></td></tr>
+        <tr><td><strong>Entrega ronda 1</strong> — manual de marca, brochure y tarjeta</td><td class="regla">día 3–4</td><td><span class="campo"></span></td></tr>
+        <tr><td>Web + contenido de redes</td><td class="regla">día 5–6</td><td><span class="campo"></span></td></tr>
+        <tr><td><strong>Entrega ronda 2</strong> — observaciones aplicadas</td><td class="regla">día 7</td><td><span class="campo"></span></td></tr>
+        <tr><td><strong>Entrega final</strong> + pago del saldo (S/ 250)</td><td class="regla">día 8–10</td><td><span class="campo"></span></td></tr>
+      </table>
+      <div class="reglas-obs">
+        <span class="etq">REGLAS DE OBSERVACIONES — LEERLAS EN VOZ ALTA</span>
+        <ul>
+          <li>El paquete incluye <strong>2 rondas de observaciones</strong>. En cada ronda, el cliente manda <strong>todos sus comentarios juntos</strong>, en una sola lista.</li>
+          <li><strong>Levantamiento de observaciones: máximo 5 días</strong> por ronda, contados desde que recibimos la lista completa.</li>
+          <li>Comentarios sueltos se juntan por 48 horas y cuentan como una sola ronda.</li>
+          <li>Ronda adicional: S/ 50. Corregir un error nuestro (typo, dato mal escrito) <strong>no consume ronda</strong>.</li>
+        </ul>
+      </div>
+      <ul class="check">
+        <li><span class="casilla"></span> Leí las reglas de observaciones en voz alta y el cliente confirmó que las entiende.</li>
+        <li><span class="casilla"></span> El cliente dio su conformidad a las fechas (vale un "de acuerdo" por WhatsApp, por escrito).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="etapa">
+    <div class="riel"><div class="num">✓</div></div>
+    <div class="cuerpo">
+      <h2>Cierre <span class="tiempo">1–2 MIN</span></h2>
+      <div class="guion">
+        <span class="etq">GUION</span>
+        <em>"Entonces quedamos así: hoy te llega el acuerdo para tu firma y la lista de lo que me tienes que mandar. Apenas tenga tu material completo, el <strong>[fecha]</strong> te muestro las primeras propuestas de logo. Guárdame como <strong>FastWolf</strong> en tus contactos — por ahí va todo el proyecto."</em>
+      </div>
+      <div class="post">
+        <h3>Después de la entrevista — el mismo día</h3>
+        <ul class="check">
+          <li><span class="casilla"></span> Envié por WhatsApp: el acuerdo para firma + la lista de material pendiente + el resumen de fechas comprometidas.</li>
+          <li><span class="casilla"></span> Guardé el brief y el catálogo marcado en la carpeta del proyecto en Drive.</li>
+          <li><span class="casilla"></span> Registré las fechas comprometidas en el calendario.</li>
+          <li><span class="casilla"></span> Si hubo señales de alerta, se lo comuniqué a FastWolf.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>FastWolf — Diseño de Marca y Web · Tu marca lista en 7 días</span>
+    <span>Protocolo de entrevista · v1 · agosto 2026</span>
+  </footer>
+</div>

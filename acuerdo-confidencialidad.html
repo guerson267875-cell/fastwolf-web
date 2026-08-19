@@ -1,0 +1,279 @@
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Acuerdo de Confidencialidad FastWolf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700;1,800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Documento imprimible A4 · tema único "papel" (colores explícitos, sin modo oscuro a propósito) */
+  :root {
+    --papel: #ffffff;
+    --tinta: #132730;
+    --noche: #04181D;
+    --ambar: #E89A10;
+    --bruma: #456A73;
+    --linea: #C9D6D9;
+    --panel: #F3F8F9;
+    --fondo-pantalla: #E9EEEF;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--fondo-pantalla);
+    color: var(--tinta);
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.58;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .hoja {
+    background: var(--papel);
+    max-width: 794px;              /* ancho A4 a 96 dpi */
+    margin: 32px auto;
+    padding: 56px 68px 48px;
+    box-shadow: 0 2px 24px rgba(4, 24, 29, 0.14);
+  }
+
+  /* ---------- Cabecera de marca ---------- */
+  header {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--noche);
+  }
+  .marca { display: flex; align-items: center; gap: 10px; }
+  .marca svg { height: 36px; width: auto; display: block; }
+  .wordmark {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif;
+    font-style: italic; font-weight: 800;
+    font-size: 22px; letter-spacing: -0.5px;
+    color: var(--noche); line-height: 1;
+  }
+  .wordmark span { color: var(--ambar); }
+  .tag {
+    font-size: 9.5px; font-weight: 600; letter-spacing: 3.2px;
+    color: var(--bruma); margin-top: 3px;
+  }
+  .doc-meta { text-align: right; font-size: 10.5px; color: var(--bruma); line-height: 1.5; }
+
+  /* ---------- Título ---------- */
+  h1 {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif;
+    font-style: italic; font-weight: 800;
+    font-size: 27px; letter-spacing: -0.4px;
+    color: var(--noche);
+    margin: 26px 0 6px;
+    text-wrap: balance;
+  }
+  .bajada { margin: 0 0 18px; color: var(--bruma); font-size: 13px; }
+
+  /* ---------- Caja "en simple" ---------- */
+  .en-simple {
+    background: var(--panel);
+    border: 1px solid var(--linea);
+    padding: 14px 18px 12px;
+    margin: 0 0 22px;
+    break-inside: avoid;
+  }
+  .en-simple .etiqueta {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 2.6px;
+    color: var(--ambar); text-transform: uppercase;
+    display: block; margin-bottom: 6px;
+  }
+  .en-simple ul { margin: 0 0 6px; padding-left: 18px; }
+  .en-simple li { margin: 3px 0; }
+  .en-simple .nota { font-size: 10.5px; color: var(--bruma); margin: 6px 0 0; }
+
+  /* ---------- Cuerpo ---------- */
+  p { margin: 0 0 11px; orphans: 3; widows: 3; }
+  strong { color: var(--noche); }
+  .partes { margin: 0 0 14px; padding-left: 18px; }
+  .partes li { margin: 0 0 9px; }
+  ol.letras { margin: 4px 0 11px; padding-left: 30px; }
+  ol.letras li { margin: 2px 0; padding-left: 4px; }
+  ol.letras li::marker { color: var(--bruma); font-weight: 600; }
+
+  .clausula { margin-top: 4px; }
+  .clausula > p:first-child strong:first-child { color: var(--noche); }
+
+  /* Campo para llenar a mano */
+  .campo {
+    display: inline-block;
+    border-bottom: 1px solid var(--tinta);
+    min-width: 150px; height: 1.1em;
+    vertical-align: baseline;
+  }
+  .campo.corto  { min-width: 70px; }
+  .campo.medio  { min-width: 110px; }
+  .campo.largo  { min-width: 230px; }
+
+  /* Casillas de la cláusula de portafolio */
+  .opciones { margin: 4px 0 12px; padding-left: 6px; }
+  .opciones .opcion { display: flex; align-items: baseline; gap: 9px; margin: 6px 0; }
+  .casilla {
+    width: 12px; height: 12px; flex: none;
+    border: 1.6px solid var(--noche);
+    transform: translateY(1.5px);
+  }
+
+  /* ---------- Cierre y firmas ---------- */
+  .cierre { margin-top: 16px; break-inside: avoid; }
+  .firmas {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px;
+    margin-top: 58px;
+    break-inside: avoid;
+  }
+  .firma { border-top: 1.4px solid var(--noche); padding-top: 7px; }
+  .firma .rol {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    color: var(--noche); text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .firma .dato { font-size: 11px; color: var(--bruma); margin: 8px 0 0; }
+  .firma .dato .campo { min-width: 0; width: 68%; border-bottom-color: var(--linea); }
+
+  footer {
+    margin-top: 42px; padding-top: 10px;
+    border-top: 1px solid var(--linea);
+    display: flex; justify-content: space-between; gap: 12px;
+    font-size: 10px; color: var(--bruma);
+  }
+
+  /* ---------- Impresión ---------- */
+  @page { size: A4; margin: 16mm 17mm; }
+  @media print {
+    html, body { background: var(--papel); }
+    body { font-size: 10.2pt; }
+    .hoja { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+    header { break-after: avoid; }
+    .firmas { margin-top: 46px; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+
+<div class="hoja">
+  <header>
+    <div class="marca">
+      <svg viewBox="20 6 80 92" role="img" aria-label="Isotipo FastWolf">
+        <path d="M24,10 L46,24 L28,44 Z" fill="#04181D"/>
+        <path d="M96,10 L74,24 L92,44 Z" fill="#04181D"/>
+        <path fill-rule="evenodd" d="M28,38 L60,26 L92,38 L88,64 L60,94 L32,64 Z M53,72 L67,72 L60,83 Z" fill="#04181D"/>
+        <path d="M37,49 L52,55 L50,62 L35,55 Z" fill="#E89A10"/>
+        <path d="M83,49 L68,55 L70,62 L85,55 Z" fill="#E89A10"/>
+      </svg>
+      <div>
+        <div class="wordmark">Fast<span>Wolf</span></div>
+        <div class="tag">DISEÑO DE MARCA Y WEB</div>
+      </div>
+    </div>
+    <div class="doc-meta">
+      Documento de compromiso<br>
+      WhatsApp +51 957 577 494
+    </div>
+  </header>
+
+  <h1>Acuerdo de Confidencialidad</h1>
+  <p class="bajada">Protege toda la información que EL CLIENTE comparte durante la entrevista y el desarrollo de su proyecto.</p>
+
+  <aside class="en-simple">
+    <span class="etiqueta">En palabras simples</span>
+    <ul>
+      <li>Todo lo que nos cuentes de tu negocio se usa <strong>solo para tu proyecto</strong>. No se comparte con nadie.</li>
+      <li>La persona que te entrevista <strong>también firma</strong> y responde a título personal.</li>
+      <li>Tus datos personales están protegidos por la <strong>Ley N.° 29733</strong>.</li>
+    </ul>
+    <p class="nota">Este resumen es solo informativo; lo que obliga a las partes es el texto de las cláusulas.</p>
+  </aside>
+
+  <p>Conste por el presente documento el <strong>Acuerdo de Confidencialidad</strong> que celebran:</p>
+
+  <ul class="partes">
+    <li><strong>FASTWOLF — Diseño de Marca y Web</strong>, representada en este acto por <span class="campo largo"></span>, identificado(a) con DNI N.° <span class="campo medio"></span> (en adelante, «FASTWOLF»);</li>
+    <li><strong>EL(LA) ENTREVISTADOR(A)</strong>, don/doña <span class="campo largo"></span>, identificado(a) con DNI N.° <span class="campo medio"></span>, quien conduce la entrevista y el levantamiento de información por encargo de FASTWOLF (en adelante, «EL ENTREVISTADOR»); y</li>
+    <li><strong>EL CLIENTE</strong>, <span class="campo largo"></span> (nombre o razón social), identificado(a) con DNI/RUC N.° <span class="campo medio"></span>, representado(a) por <span class="campo largo"></span> (de ser el caso) (en adelante, «EL CLIENTE»).</li>
+  </ul>
+
+  <p>En los términos y condiciones siguientes:</p>
+
+  <div class="clausula">
+    <p><strong>PRIMERA — Objeto.</strong> Con motivo del servicio «Paquete Identidad + Web» —u otro servicio que EL CLIENTE contrate con FASTWOLF—, EL CLIENTE compartirá información sobre su negocio durante la entrevista inicial, el llenado del brief y el desarrollo del proyecto. El presente Acuerdo garantiza que dicha información será tratada con estricta reserva y utilizada única y exclusivamente para prestar el servicio contratado.</p>
+  </div>
+
+  <div class="clausula">
+    <p><strong>SEGUNDA — Información confidencial.</strong> Se considera confidencial toda información no pública que EL CLIENTE entregue por cualquier medio (entrevista presencial o virtual, WhatsApp, correo electrónico, documentos u otros), incluyendo de manera enunciativa mas no limitativa:</p>
+    <ol class="letras" type="a">
+      <li>información comercial, financiera y estratégica del negocio;</li>
+      <li>listas de clientes y proveedores; precios, costos y márgenes;</li>
+      <li>recetas, fórmulas, procesos, métodos de trabajo y conocimientos técnicos (<em>know-how</em>);</li>
+      <li>planes, proyectos y lanzamientos aún no anunciados;</li>
+      <li>datos personales y de contacto de EL CLIENTE, de su personal o de sus clientes;</li>
+      <li>fotografías, videos y materiales aún no publicados;</li>
+      <li>usuarios, contraseñas y accesos a cuentas o plataformas.</li>
+    </ol>
+  </div>
+
+  <div class="clausula">
+    <p><strong>TERCERA — Información no comprendida.</strong> No se considera confidencial: (a) la información que ya era de dominio público, o que llegue a serlo sin intervención de FASTWOLF ni de EL ENTREVISTADOR; (b) el contenido que EL CLIENTE apruebe expresamente para su publicación en los entregables del servicio (página web, brochure, tarjeta de presentación, publicaciones en redes sociales), pues su difusión es precisamente la finalidad del servicio; y (c) la información cuya entrega sea exigida por ley o por autoridad competente, en cuyo caso se dará aviso a EL CLIENTE tan pronto como sea legalmente posible.</p>
+  </div>
+
+  <div class="clausula">
+    <p><strong>CUARTA — Obligaciones de FASTWOLF y de EL ENTREVISTADOR.</strong> Ambos se obligan a:</p>
+    <ol class="letras" type="a">
+      <li>no divulgar, publicar, compartir ni comentar la información confidencial con terceros;</li>
+      <li>utilizarla única y exclusivamente para la prestación del servicio contratado;</li>
+      <li>limitar su acceso a las personas estrictamente necesarias para el proyecto, quienes quedan sujetas a estas mismas obligaciones;</li>
+      <li>custodiar con diligencia los usuarios, contraseñas y accesos entregados, y restituirlos o eliminarlos al término del proyecto;</li>
+      <li>devolver o eliminar la información confidencial a solicitud de EL CLIENTE al finalizar el servicio, salvo aquella que deba conservarse por obligación legal, contable o tributaria.</li>
+    </ol>
+  </div>
+
+  <div class="clausula">
+    <p><strong>QUINTA — Uso de portafolio.</strong> FASTWOLF podrá exhibir como muestra de su trabajo únicamente los entregables finales que ya sean públicos (logotipo, página web y piezas publicadas), sin revelar en ningún caso información interna del negocio. EL CLIENTE manifiesta su decisión marcando una de las siguientes opciones:</p>
+    <div class="opciones">
+      <div class="opcion"><span class="casilla"></span><span><strong>Autorizo</strong> que los entregables públicos de mi proyecto se muestren como portafolio de FASTWOLF.</span></div>
+      <div class="opcion"><span class="casilla"></span><span><strong>No autorizo</strong>; mi proyecto no se exhibirá como referencia.</span></div>
+    </div>
+  </div>
+
+  <div class="clausula">
+    <p><strong>SEXTA — Protección de datos personales.</strong> Los datos personales que EL CLIENTE proporcione serán tratados conforme a la <strong>Ley N.° 29733, Ley de Protección de Datos Personales</strong>, y su Reglamento: se utilizarán únicamente para la prestación del servicio, no serán vendidos ni cedidos a terceros, y EL CLIENTE podrá ejercer en cualquier momento sus derechos de acceso, rectificación, cancelación y oposición escribiendo al WhatsApp indicado en la cabecera de este documento.</p>
+  </div>
+
+  <div class="clausula">
+    <p><strong>SÉPTIMA — Vigencia.</strong> Este Acuerdo rige desde su firma, durante todo el desarrollo del proyecto y por <strong>tres (3) años</strong> contados desde la entrega final. Los secretos empresariales de EL CLIENTE mantienen su protección mientras conserven tal carácter, conforme al <strong>Decreto Legislativo N.° 1044, Ley de Represión de la Competencia Desleal</strong>.</p>
+  </div>
+
+  <div class="clausula">
+    <p><strong>OCTAVA — Responsabilidad.</strong> El incumplimiento del presente Acuerdo obliga a indemnizar los daños y perjuicios ocasionados, conforme al <strong>artículo 1321 del Código Civil</strong>, sin perjuicio de las acciones por competencia desleal (Decreto Legislativo N.° 1044) y de las demás que correspondan. EL ENTREVISTADOR asume las obligaciones de este Acuerdo también <strong>a título personal</strong> respecto de toda la información a la que acceda.</p>
+  </div>
+
+  <div class="clausula">
+    <p><strong>NOVENA — Ley aplicable y solución de controversias.</strong> El presente Acuerdo se rige por las leyes de la República del Perú. Toda controversia derivada de él se procurará resolver primero de manera directa y de buena fe; de no lograrse acuerdo, las partes se someten a la competencia de los jueces y tribunales de <span class="campo medio"></span>.</p>
+  </div>
+
+  <div class="cierre">
+    <p>En señal de conformidad, las partes firman el presente documento en dos (2) ejemplares de igual valor, en la ciudad de <span class="campo medio"></span>, a los <span class="campo corto"></span> días del mes de <span class="campo medio"></span> de <span style="white-space: nowrap;">20<span class="campo corto"></span>.</span></p>
+
+    <div class="firmas">
+      <div class="firma">
+        <div class="rol">FastWolf</div>
+        <p class="dato">Nombre: <span class="campo"></span></p>
+        <p class="dato">DNI: <span class="campo"></span></p>
+      </div>
+      <div class="firma">
+        <div class="rol">El Entrevistador</div>
+        <p class="dato">Nombre: <span class="campo"></span></p>
+        <p class="dato">DNI: <span class="campo"></span></p>
+      </div>
+      <div class="firma">
+        <div class="rol">El Cliente</div>
+        <p class="dato">Nombre: <span class="campo"></span></p>
+        <p class="dato">DNI/RUC: <span class="campo"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>FastWolf — Diseño de Marca y Web · Tu marca lista en 7 días</span>
+    <span>Acuerdo de Confidencialidad · v1 · agosto 2026</span>
+  </footer>
+</div>
