@@ -1,2 +1,5 @@
 # Borradores y notas internas: no se publican
 guiones/
+.vercel/
+.vercel
+.env*
