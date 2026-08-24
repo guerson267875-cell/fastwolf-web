@@ -3,258 +3,464 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FastWolf — Diseño de Marca y Web | Tu marca lista en 7 días</title>
-<meta name="description" content="Le damos a tu negocio la imagen completa para verse serio: logo, manual de marca, brochure, tarjetas, página web y contenido para redes. Todo en 7 días, precio cerrado: S/ 500. Perú.">
+<title>FastWolf — Diseño de marca y web | Tu negocio, listo en 7 días</title>
+<meta name="description" content="Estudio de marca en Perú. Logo, manual, brochure, tarjetas, página web y contenido para redes — todo junto, por una sola mano, en una semana. Con lanzamiento publicitario incluido.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<meta property="og:title" content="FastWolf — Tu marca lista en 7 días">
-<meta property="og:description" content="Paquete completo de identidad + web por S/ 500: logo, manual de marca, brochure, tarjetas, página web y contenido para redes.">
+<meta property="og:title" content="FastWolf — Diseño de marca y web | Tu negocio, listo en 7 días">
+<meta property="og:description" content="Estudio de marca en Perú. Logo, manual, brochure, tarjetas, página web y contenido para redes — todo junto, por una sola mano, en una semana. Con lanzamiento publicitario incluido.">
 <meta property="og:image" content="https://guerson267875-cell.github.io/fastwolf-web/assets/og-image.jpg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,600;0,700;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Exo+2:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --noche:#04181D; --noche2:#072229; --ambar:#FFB22C; --cian:#30D6E8;
-    --hielo:#EAFCFF; --bruma:#8FC9D2; --verde:#1EC978; --verde2:#14A862;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { font-family:'Inter',sans-serif; background:var(--noche); color:var(--hielo); line-height:1.6; overflow-x:clip; }
-  img { max-width:100%; display:block; }
-  a { color:inherit; }
-  .wrap { max-width:1100px; margin:0 auto; padding:0 24px; }
-  h1,h2,h3 { font-family:'Exo 2',sans-serif; }
+:root{
+  --noche:#031317; --noche2:#06212A; --noche3:#0A2E38;
+  --ambar:#FFB22C; --cian:#30D6E8; --hielo:#EAFCFF; --bruma:#8AC0CA;
+  --verde:#25D366; --gris:#9AA3A6;
+  --linea:rgba(48,214,232,.15); --linea2:rgba(48,214,232,.3);
+  --pad:clamp(1.1rem,4vw,3rem);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--noche); color:var(--hielo);
+  font-family:'Inter',system-ui,sans-serif; line-height:1.64; font-size:clamp(.98rem,.9rem + .3vw,1.06rem);
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+body::after{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.55;
+  background:radial-gradient(80% 55% at 78% -5%,rgba(255,178,44,.16),transparent 62%),
+             radial-gradient(70% 50% at 8% 12%,rgba(48,214,232,.12),transparent 60%);
+}
+h1,h2,h3,h4{font-family:'Exo 2',sans-serif; margin:0; line-height:1.04; text-wrap:balance}
+a{color:inherit; text-decoration:none}
+img,video{display:block; max-width:100%}
+.wrap{position:relative; z-index:1; max-width:1160px; margin:0 auto; padding:0 var(--pad)}
+.cond{font-family:'Barlow Condensed',sans-serif}
 
-  .btn-wsp {
-    display:inline-flex; align-items:center; gap:12px;
-    background:linear-gradient(135deg,var(--verde),var(--verde2));
-    color:#fff; font-weight:700; font-size:1.05rem;
-    padding:16px 32px; border-radius:999px; text-decoration:none;
-    box-shadow:0 0 34px rgba(30,201,120,.35);
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .btn-wsp:hover { transform:translateY(-2px); box-shadow:0 0 48px rgba(30,201,120,.55); }
-  .btn-wsp svg { width:22px; height:22px; flex:0 0 auto; }
+/* ===== guion ===== */
+.escena,.nota{display:none}
+body.guion .escena{
+  display:inline-block; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--noche);
+  background:var(--ambar); padding:.28rem .7rem; border-radius:2px; margin-bottom:1.3rem;
+}
+body.guion .nota{
+  display:block; margin:1.8rem 0 0; padding:.95rem 1.15rem; font-size:.85rem; color:var(--bruma);
+  border:1px dashed rgba(255,178,44,.4); border-radius:10px; background:rgba(255,178,44,.045);
+}
+body.guion .nota b{color:var(--ambar); font-weight:600}
 
-  /* HERO */
-  .hero {
-    position:relative; overflow:hidden;
-    background:
-      radial-gradient(ellipse at 85% 20%, rgba(255,178,44,.14), transparent 50%),
-      radial-gradient(ellipse at 10% 90%, rgba(48,214,232,.12), transparent 55%),
-      repeating-linear-gradient(0deg, transparent 0, transparent 79px, rgba(48,214,232,.05) 80px),
-      repeating-linear-gradient(90deg, transparent 0, transparent 79px, rgba(48,214,232,.05) 80px),
-      var(--noche);
-    padding:36px 0 0;
-  }
-  .hero .wrap { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:40px; align-items:center; }
-  .hero-txt { padding:40px 0 70px; }
-  .hero-logo { width:280px; margin-bottom:44px; }
-  .hero h1 { font-size:clamp(2.4rem, 5.4vw, 4rem); font-weight:800; font-style:italic; line-height:1.05; color:#fff; }
-  .hero h1 em { font-style:italic; color:var(--ambar); }
-  .hero p.sub { font-size:1.15rem; color:var(--bruma); margin:22px 0 34px; max-width:32em; }
-  .hero p.sub b { color:var(--hielo); }
-  .hero-img { align-self:end; }
-  .hero-img img { width:100%; border-radius:20px 20px 0 0; box-shadow:0 -10px 60px rgba(255,178,44,.18); }
-  .mini { margin-top:18px; font-size:.9rem; color:var(--bruma); }
+/* ===== nav ===== */
+.nav{position:sticky; top:0; z-index:60; display:flex; align-items:center; gap:1.4rem; padding:.7rem var(--pad);
+  background:rgba(3,19,23,.88); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); border-bottom:1px solid var(--linea)}
+.nav .brand{display:flex; align-items:center; gap:.55rem; font-family:'Exo 2'; font-weight:800; font-style:italic; font-size:1.05rem}
+.nav .brand img{width:26px; height:26px; object-fit:contain}
+.nav .brand i{color:var(--ambar); font-style:italic}
+.nav ul{display:flex; gap:1.3rem; list-style:none; margin:0 0 0 auto; padding:0; font-size:.86rem; color:var(--bruma)}
+.nav a:hover{color:var(--ambar)}
+.nav .wsp{background:var(--verde); color:#04210F; font-weight:650; font-size:.84rem; padding:.45rem .95rem; border-radius:999px; white-space:nowrap}
+@media(max-width:880px){ .nav ul{display:none} .nav .wsp{margin-left:auto} }
 
-  /* PAQUETE */
-  section { padding:80px 0; }
-  .kicker { font-size:.85rem; font-weight:700; letter-spacing:4px; color:var(--cian); text-transform:uppercase; }
-  h2 { font-size:clamp(1.7rem, 3.6vw, 2.5rem); font-weight:800; font-style:italic; color:#fff; margin:10px 0 14px; }
-  .lead { color:var(--bruma); max-width:44em; }
-  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:18px; margin-top:40px; }
-  .card {
-    background:var(--noche2); border:1px solid rgba(48,214,232,.18);
-    border-radius:16px; padding:26px 22px;
-  }
-  .card .n { font-family:'Exo 2',sans-serif; font-weight:800; font-style:italic; font-size:1.5rem; color:var(--ambar); }
-  .card h3 { font-size:1.06rem; color:#fff; margin:8px 0 6px; }
-  .card p { font-size:.9rem; color:var(--bruma); }
+/* ===== hero ===== */
+.hero{padding:clamp(3.6rem,10vw,7rem) 0 clamp(2.6rem,6vw,4rem); position:relative}
+.hero .seg{font-family:'Barlow Condensed',sans-serif; font-size:1rem; letter-spacing:.28em; text-transform:uppercase; color:var(--cian); margin:0 0 1.3rem}
+.hero h1{font-style:italic; font-weight:800; font-size:clamp(2.5rem,1rem + 6.6vw,5.6rem); letter-spacing:-.025em}
+.hero h1 em{font-style:italic; color:var(--ambar)}
+.hero h1 .tachado{position:relative; white-space:nowrap}
+.hero h1 .tachado::after{content:""; position:absolute; left:-2%; right:-2%; top:52%; height:.07em; background:var(--ambar); transform:scaleX(0); transform-origin:left; animation:tacha .7s .9s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes tacha{to{transform:scaleX(1)}}
+.hero .sub{max-width:54ch; color:var(--bruma); font-size:clamp(1.03rem,.95rem + .5vw,1.3rem); margin:1.6rem 0 2.2rem}
+.cta{display:inline-flex; align-items:center; gap:.6rem; background:var(--verde); color:#04210F; font-weight:700;
+  padding:.92rem 1.55rem; border-radius:999px; font-size:1rem; box-shadow:0 12px 30px -12px rgba(37,211,102,.6);
+  transition:transform .18s, box-shadow .18s}
+.cta:hover{transform:translateY(-2px); box-shadow:0 18px 38px -14px rgba(37,211,102,.78)}
+.cta svg{width:19px; height:19px; fill:currentColor}
+.hero .under{margin-top:1rem; font-size:.86rem; color:var(--bruma)}
+@media(max-width:620px){
+  .hero h1{font-size:clamp(1.85rem,1rem + 5.2vw,2.7rem); letter-spacing:-.02em}
+  .hero h1 br{display:none}
+  .hero .sub{font-size:1.02rem}
+}
 
-  .priceband {
-    margin-top:44px; background:var(--noche2);
-    border:2px solid rgba(255,178,44,.7); border-radius:20px;
-    padding:34px 38px; display:flex; flex-wrap:wrap; align-items:center; gap:28px;
-    box-shadow:0 0 50px rgba(255,178,44,.12);
-  }
-  .priceband .big { font-family:'Exo 2',sans-serif; font-weight:800; font-style:italic; font-size:3.4rem; color:var(--ambar); line-height:1; }
-  .priceband .det { flex:1; min-width:240px; color:var(--bruma); font-size:.96rem; }
-  .priceband .det b { color:var(--hielo); }
+/* ===== secciones ===== */
+section{padding:clamp(3rem,7vw,5.6rem) 0; border-top:1px solid var(--linea); position:relative; z-index:1}
+.eyebrow{font-family:'Barlow Condensed',sans-serif; font-size:.98rem; letter-spacing:.26em; text-transform:uppercase; color:var(--cian); margin:0 0 .8rem}
+h2{font-style:italic; font-weight:800; font-size:clamp(1.75rem,1.1rem + 2.4vw,3rem); letter-spacing:-.015em}
+.lede{color:var(--bruma); max-width:60ch; margin:1.1rem 0 0; font-size:1.04em}
 
-  /* PROCESO */
-  .alt { background:var(--noche2); }
-  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:40px; }
-  .step { border-left:3px solid var(--ambar); padding:4px 0 4px 18px; }
-  .step b { font-family:'Exo 2',sans-serif; color:#fff; display:block; margin-bottom:4px; }
-  .step span { font-size:.92rem; color:var(--bruma); }
+/* ===== antes / después ===== */
+.switch{display:inline-flex; gap:.25rem; margin:2rem 0 1.6rem; padding:.25rem; border:1px solid var(--linea2); border-radius:999px; background:var(--noche2)}
+.switch button{
+  border:0; background:transparent; color:var(--bruma); cursor:pointer; padding:.5rem 1.15rem; border-radius:999px;
+  font-family:'Inter'; font-size:.85rem; font-weight:600; letter-spacing:.02em; transition:.2s;
+}
+.switch button.on{background:var(--ambar); color:var(--noche)}
+.escaparate{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; align-items:stretch}
+@media(max-width:820px){ .escaparate{grid-template-columns:1fr} }
+.pieza-demo{position:relative; border:1px solid var(--linea); border-radius:14px; overflow:hidden; background:var(--noche2); min-height:380px}
+.capa{position:absolute; inset:0; padding:1.2rem; display:flex; flex-direction:column; transition:opacity .5s cubic-bezier(.4,0,.2,1)}
+.capa.antes{background:#EDEDE9; color:#333; font-family:Arial,Helvetica,sans-serif; opacity:1}
+.capa.despues{opacity:0; background:linear-gradient(155deg,var(--noche3),var(--noche2)); color:var(--hielo)}
+body.despues .capa.antes{opacity:0}
+body.despues .capa.despues{opacity:1}
+/* --- capas con imagen real --- */
+.capa.foto{padding:0}
+.capa.foto img{width:100%; flex:1 1 auto; min-height:0; object-fit:cover; object-position:center top}
+.capa.foto .pie{margin:0; padding:.72rem .9rem; font-size:.78rem; line-height:1.45}
+.capa.antes.foto{background:#F4F3EF}
+.capa.antes.foto .pie{background:#F4F3EF; color:#55534e; border-top:1px solid #dbdad4}
+.capa.despues.foto .pie{background:rgba(4,24,29,.92); color:var(--bruma); border-top:1px solid var(--linea)}
+.capa.despues.foto .pie b{color:var(--ambar)}
+.pie-demo a{color:var(--ambar); border-bottom:1px solid rgba(255,178,44,.4)}
+.pieza-demo .rot{position:absolute; z-index:3; top:.7rem; right:.75rem; font-family:'Barlow Condensed',sans-serif;
+  font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--bruma); background:rgba(3,19,23,.72);
+  padding:.16rem .55rem; border-radius:3px}
+body:not(.despues) .pieza-demo .rot{color:#6b6b6b; background:rgba(255,255,255,.8)}
+/* --- antes: tarjeta --- */
+.capa.antes .t1{font-size:1.35rem; font-weight:700; margin:0; padding-right:6rem}
+.capa.antes .t2{font-size:.82rem; margin:.2rem 0 0; color:#666}
+.capa.antes .cuerpo{margin-top:auto; font-size:.8rem; color:#555; line-height:1.5}
+.capa.antes .caja{border:1px solid #c9c9c4; background:#fff; padding:.55rem .7rem; margin-top:.6rem; font-size:.78rem}
+.capa.antes .fea{width:44px; height:44px; border-radius:50%; background:#c8c8c2; display:grid; place-items:center; font-size:1.15rem; color:#8a8a84; margin-bottom:.7rem}
+/* --- después: tarjeta --- */
+.capa.despues .logo{display:flex; align-items:center; gap:.5rem; margin-bottom:.9rem}
+.capa.despues .logo img{width:36px; height:36px; object-fit:contain}
+.capa.despues .logo b{font-family:'Exo 2'; font-style:italic; font-weight:800; font-size:1.05rem}
+.capa.despues .t1{font-family:'Exo 2'; font-style:italic; font-weight:800; font-size:1.42rem; margin:0; letter-spacing:-.01em}
+.capa.despues .t1 em{color:var(--ambar); font-style:italic}
+.capa.despues .t2{font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--cian); margin:.45rem 0 0}
+.capa.despues .cuerpo{margin-top:auto; font-size:.83rem; color:var(--bruma)}
+.capa.despues .chips{display:flex; flex-wrap:wrap; gap:.3rem; margin-top:.7rem}
+.capa.despues .chips span{font-size:.68rem; letter-spacing:.06em; border:1px solid var(--linea2); border-radius:99px; padding:.14rem .55rem; color:var(--bruma)}
+.capa.despues .barra{height:3px; border-radius:3px; background:linear-gradient(90deg,var(--ambar),var(--cian)); margin-top:.85rem}
+/* --- mock feed --- */
+.feed{display:grid; grid-template-columns:repeat(3,1fr); gap:4px; margin-top:.7rem}
+.feed i{aspect-ratio:1; display:block; border-radius:3px}
+.capa.antes .feed i{background:#d5d5cf}
+.capa.antes .feed i:nth-child(2){background:#cfcfc8}
+.capa.antes .feed i:nth-child(5){background:#c6c6bf}
+.capa.despues .feed i{background:linear-gradient(140deg,rgba(255,178,44,.5),rgba(48,214,232,.28))}
+.capa.despues .feed i:nth-child(2){background:linear-gradient(140deg,rgba(48,214,232,.42),rgba(255,178,44,.2))}
+.capa.despues .feed i:nth-child(5){background:linear-gradient(140deg,rgba(255,178,44,.75),rgba(48,214,232,.3))}
+.pie-demo{margin-top:1.2rem; font-size:.8rem; color:var(--bruma)}
 
-  /* VIDEO + GALERÍA */
-  .showcase { display:grid; grid-template-columns:280px minmax(0,1fr); gap:44px; align-items:center; }
-  .phone {
-    border:10px solid #0b2c35; border-radius:34px; overflow:hidden;
-    box-shadow:0 20px 70px rgba(0,0,0,.5), 0 0 40px rgba(48,214,232,.12);
-  }
-  .phone video { width:100%; display:block; }
-  .gal { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; }
-  .gal img { width:100%; border-radius:14px; border:1px solid rgba(48,214,232,.2); }
+/* ===== lista en tarjetas ===== */
+.piezas{display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:1rem; margin-top:2.4rem}
+.p{background:var(--noche2); border:1px solid var(--linea); border-radius:14px; padding:1.3rem 1.35rem; position:relative; overflow:hidden; transition:border-color .25s, transform .25s}
+.p:hover{border-color:var(--linea2); transform:translateY(-4px)}
+.p .n{font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:.92rem; letter-spacing:.2em; color:var(--ambar)}
+.p h3{font-size:1.1rem; font-weight:800; margin:.5rem 0 .45rem}
+.p p{margin:0; font-size:.9rem; color:var(--bruma)}
+.p .det{margin-top:.7rem; font-size:.76rem; color:rgba(138,192,202,.75); letter-spacing:.03em}
+.p.destacada{border-color:rgba(255,178,44,.5); background:linear-gradient(155deg,rgba(255,178,44,.13),var(--noche2) 65%)}
+.p.destacada .n{color:var(--ambar)}
+.p .sello{position:absolute; top:0; right:0; font-family:'Barlow Condensed',sans-serif; font-size:.76rem; letter-spacing:.16em; text-transform:uppercase; background:var(--ambar); color:var(--noche); padding:.2rem .6rem; border-radius:0 0 0 8px}
 
-  /* FAQ */
-  details {
-    background:var(--noche2); border:1px solid rgba(48,214,232,.16);
-    border-radius:14px; padding:18px 22px; margin-top:14px;
-  }
-  summary { font-weight:600; color:#fff; cursor:pointer; font-size:1.02rem; }
-  details p { margin-top:10px; color:var(--bruma); font-size:.95rem; }
+/* ===== casos reales ===== */
+.casos{display:grid; grid-template-columns:repeat(auto-fit,minmax(228px,1fr)); gap:1rem; margin-top:2.4rem}
+.caso{display:block; border:1px solid var(--linea); border-radius:14px; overflow:hidden; background:var(--noche2); transition:transform .25s cubic-bezier(.2,.7,.3,1), border-color .25s}
+.caso:hover{transform:translateY(-5px); border-color:rgba(255,178,44,.55)}
+.caso .th{aspect-ratio:16/11; overflow:hidden; background:var(--noche3)}
+.caso .th img{width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.caso:hover .th img{transform:scale(1.05)}
+.caso .ft{padding:.85rem 1rem}
+.caso h3{font-size:1.02rem; font-weight:800; margin-bottom:.2rem}
+.caso .m{margin:0; font-family:'Barlow Condensed',sans-serif; font-size:.9rem; letter-spacing:.1em; text-transform:uppercase; color:var(--bruma)}
+.caso .m b{color:var(--cian); font-weight:500}
+.vermas{display:inline-block; margin-top:1.6rem; color:var(--ambar); font-weight:650; border-bottom:1px solid rgba(255,178,44,.4)}
+.propia{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:1.3rem; align-items:center;
+  margin-top:2.6rem; border:1px solid var(--linea); border-radius:16px; padding:1.15rem; background:var(--noche2)}
+.propia video{width:100%; border-radius:11px; border:1px solid var(--linea)}
+.propia h3{font-style:italic; font-weight:800; font-size:clamp(1.15rem,1rem + .9vw,1.6rem); margin-bottom:.55rem}
+.propia p{margin:0; color:var(--bruma); font-size:.95rem}
+@media(max-width:700px){ .propia{grid-template-columns:1fr} }
 
-  /* CTA FINAL + FOOTER */
-  .final { text-align:center; }
-  .final h2 { margin-bottom:26px; }
-  footer { border-top:1px solid rgba(48,214,232,.15); padding:36px 0 110px; }
-  footer .wrap { display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; }
-  footer img { width:170px; }
-  footer p { font-size:.85rem; color:var(--bruma); }
+/* ===== timeline ===== */
+.dias{margin-top:2.6rem; display:grid; gap:0; border-top:1px solid var(--linea)}
+.dia{display:grid; grid-template-columns:6.5rem 1fr; gap:1.4rem; padding:1.35rem 0; border-bottom:1px solid var(--linea); align-items:start; transition:background .2s}
+.dia:hover{background:rgba(48,214,232,.04)}
+.dia .d{font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.6rem; line-height:1; color:var(--ambar); letter-spacing:.02em}
+.dia .d small{display:block; font-size:.68rem; letter-spacing:.2em; color:var(--bruma); font-weight:500; margin-top:.2rem}
+.dia h4{font-size:1.06rem; margin-bottom:.28rem}
+.dia p{margin:0; color:var(--bruma); font-size:.93rem; max-width:56ch}
+.dia.final .d{color:var(--cian)}
+@media(max-width:620px){ .dia{grid-template-columns:1fr; gap:.5rem} }
 
-  .float-wsp {
-    position:fixed; right:20px; bottom:20px; z-index:50;
-    width:62px; height:62px; border-radius:50%;
-    background:linear-gradient(135deg,var(--verde),var(--verde2));
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 8px 30px rgba(0,0,0,.45), 0 0 26px rgba(30,201,120,.5);
-  }
-  .float-wsp svg { width:32px; height:32px; }
+/* ===== promo ===== */
+.promo{margin-top:2.6rem; border:1px solid rgba(255,178,44,.45); border-radius:18px; overflow:hidden;
+  background:linear-gradient(150deg,rgba(255,178,44,.15),rgba(48,214,232,.05) 55%,transparent)}
+.promo .top{padding:clamp(1.7rem,4vw,2.8rem)}
+.promo .sello{display:inline-block; font-family:'Barlow Condensed',sans-serif; font-size:.85rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--noche); background:var(--ambar); padding:.24rem .75rem; border-radius:3px; margin-bottom:1.1rem}
+.promo h3{font-style:italic; font-weight:800; font-size:clamp(1.5rem,1rem + 2vw,2.4rem); margin-bottom:.85rem}
+.promo .top p{color:var(--bruma); max-width:58ch; margin:0}
+.promo ul{display:grid; grid-template-columns:repeat(auto-fit,minmax(178px,1fr)); gap:1px; background:var(--linea); list-style:none; margin:1.8rem 0 0; padding:0; border-top:1px solid var(--linea)}
+.promo ul li{background:var(--noche2); padding:1rem 1.15rem; font-size:.87rem; color:var(--bruma)}
+.promo ul b{display:block; color:var(--hielo); font-weight:600; margin-bottom:.15rem}
+.promo .cierre{padding:clamp(1.4rem,4vw,2.2rem); display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; border-top:1px dashed rgba(255,178,44,.4)}
+.promo .cierre p{margin:0; font-size:.93rem; max-width:36ch}
 
-  @media (max-width:820px) {
-    .hero .wrap { grid-template-columns:minmax(0,1fr); }
-    .hero-img { order:-1; margin:0 -24px; }
-    .hero-img img { border-radius:0; }
-    .hero-txt { padding:8px 0 56px; }
-    .hero-logo { width:220px; margin-bottom:30px; }
-    .showcase { grid-template-columns:minmax(0,1fr); }
-    .phone { max-width:280px; margin:0 auto; }
-    section { padding:60px 0; }
-  }
+/* ===== cierre ===== */
+.final-sec{text-align:center; padding:clamp(3.6rem,8vw,6.4rem) 0}
+.final-sec h2{font-size:clamp(2rem,1.2rem + 3.2vw,3.6rem)}
+.final-sec p{color:var(--bruma); margin:1.1rem auto 2rem; max-width:46ch}
+footer{border-top:1px solid var(--linea); padding:1.8rem var(--pad); display:flex; flex-wrap:wrap; gap:.6rem 1.6rem;
+  justify-content:space-between; font-size:.75rem; letter-spacing:.05em; color:var(--bruma); position:relative; z-index:1}
+.wa{position:fixed; right:1.1rem; bottom:4.4rem; z-index:90; width:54px; height:54px; border-radius:50%; background:var(--verde);
+  display:grid; place-items:center; box-shadow:0 10px 26px -8px rgba(37,211,102,.7)}
+.wa svg{width:28px; height:28px; fill:#04210F}
+@media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
 </style>
 </head>
 <body>
 
-<!-- PORTADA -->
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-txt">
-      <img class="hero-logo" src="assets/logo.png" alt="FastWolf — Diseño de Marca y Web">
-      <h1>Tu marca lista<br>en <em>7 días</em>.</h1>
-      <p class="sub">Logo, manual de marca, brochure, tarjetas, página web y contenido para tus redes. <b>Paquete completo por S/ 500</b>, precio cerrado, sin sorpresas.</p>
-      <a class="btn-wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20de%20S%2F%20500" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.9 14.9 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
-        Escríbenos al WhatsApp
-      </a>
-      <p class="mini">Respondemos el mismo día · Atendemos todo el Perú a distancia</p>
-    </div>
-    <div class="hero-img"><img src="assets/hero-moto.jpg" alt="La mascota de FastWolf sobre una moto de luz"></div>
-  </div>
-</header>
+<nav class="nav">
+  <a class="brand" href="#"><img src="assets/logo.png" alt=""><span>Fast<i>Wolf</i></span></a>
+  <ul>
+    <li><a href="#cambio">El cambio</a></li>
+    <li><a href="#piezas">Qué incluye</a></li>
+    <li><a href="#dias">Los 7 días</a></li>
+    <li><a href="trabajos.html">Trabajos</a></li>
+    <li><a href="#promo">La promoción</a></li>
+  </ul>
+  <a class="wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20vi%20la%20web%20y%20quiero%20saber%20el%20precio%20de%20promoci%C3%B3n%20del%20paquete%20completo.%20%5BC-nav%5D">WhatsApp</a>
+</nav>
 
-<!-- PAQUETE -->
-<section id="paquete">
-  <div class="wrap">
-    <div class="kicker">El paquete completo</div>
-    <h2>Todo lo que tu negocio necesita para verse serio</h2>
-    <p class="lead">Cinco entregables que se diseñan juntos, con una sola dirección de marca — no piezas sueltas de proveedores distintos.</p>
-    <div class="cards">
-      <div class="card"><div class="n">01</div><h3>Manual de marca + logo</h3><p>Logo profesional en todas sus versiones, colores y tipografías definidas. Archivos editables incluidos.</p></div>
-      <div class="card"><div class="n">02</div><h3>Brochure</h3><p>Díptico listo para imprimir, en PDF de imprenta y versión ligera para WhatsApp.</p></div>
-      <div class="card"><div class="n">03</div><h3>Tarjetas de presentación</h3><p>Arte listo para imprenta, tiro y retiro, con código QR opcional.</p></div>
-      <div class="card"><div class="n">04</div><h3>Página web</h3><p>Una página que se ve perfecta en celular, con botón de WhatsApp directo y mapa.</p></div>
-      <div class="card"><div class="n">05</div><h3>Contenido para redes</h3><p>3 posts de Instagram con diseño y textos, o 1 video publicitario. Tú eliges.</p></div>
-    </div>
-    <div class="priceband">
-      <div><div style="font-size:.9rem; color:var(--bruma); letter-spacing:2px; font-weight:700;">TODO POR</div><div class="big">S/ 500</div></div>
-      <div class="det"><b>Precio cerrado.</b> 50% al inicio y 50% contra entrega · <b>2 rondas de cambios incluidas</b> · Entrega en 7 a 10 días hábiles · Todos los archivos quedan tuyos.</div>
-      <a class="btn-wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20de%20S%2F%20500" target="_blank" rel="noopener">Quiero mi paquete</a>
-    </div>
-  </div>
+<div class="wrap">
+
+<!-- ============ ESCENA 01 ============ -->
+<section class="hero" style="border-top:0">
+  <p class="seg">Estudio de marca · todo el Perú</p>
+  <h1>Tu cliente decide en <em>tres segundos</em>,<br>y no es por <span class="tachado">tu precio</span>.</h1>
+  <p class="sub">Es por cómo te ves. El mismo producto, la misma atención y el mismo esfuerzo se venden distinto cuando el logo, la tarjeta, la web y el feed hablan el mismo idioma. Eso es lo que armamos, completo, en una semana.</p>
+  <a class="cta" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20ver%20c%C3%B3mo%20se%20ver%C3%ADa%20mi%20negocio%20con%20marca%20nueva.%20%5BC1%5D">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .2-.4.4.4 0 0 0 0-.4L9.6 8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8 5 5 0 0 0 3 .6 2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.2-.3-.3-.6-.4Z"/></svg>
+    Quiero verme así
+  </a>
+  <p class="under">Te respondo el mismo día · Promoción de lanzamiento vigente</p>
 </section>
 
-<!-- PROCESO -->
-<section class="alt" id="proceso">
-  <div class="wrap">
-    <div class="kicker">Cómo trabajamos</div>
-    <h2>Del primer mensaje a tu marca completa</h2>
-    <div class="steps">
-      <div class="step"><b>1 · Arranque</b><span>Adelanto del 50% y un cuestionario de 14 preguntas que te toma 10 minutos.</span></div>
-      <div class="step"><b>2 · Propuestas</b><span>En 2 días ves 2 o 3 propuestas de logo distintas y eliges la dirección.</span></div>
-      <div class="step"><b>3 · Afinado</b><span>Dos rondas de observaciones para dejar todo exactamente como quieres.</span></div>
-      <div class="step"><b>4 · Entrega</b><span>En 7 a 10 días recibes la carpeta completa, con archivos finales y editables.</span></div>
-    </div>
-  </div>
-</section>
+<!-- ============ ESCENA 02 ============ -->
+<section id="cambio">
+  <p class="eyebrow">La diferencia</p>
+  <h2>El Tortón, antes y después.</h2>
+  <p class="lede">Una pastelería de Arequipa con más de diez años de oficio y dos locales. Vendía bien y su tarjeta no estaba mal — el problema era que ahí terminaba todo: ni paleta escrita, ni tipografías definidas, ni reglas, ni sistema. Mueve el interruptor.</p>
 
-<!-- MUESTRA -->
-<section id="muestra">
-  <div class="wrap">
-    <div class="kicker">Así se ve nuestro trabajo</div>
-    <h2>Nuestra propia marca es la muestra</h2>
-    <p class="lead">Todo lo que ves aquí — el lobo, el logo, este sitio y el video — lo diseñamos con el mismo paquete que te ofrecemos.</p>
-    <div class="showcase" style="margin-top:40px;">
-      <div class="phone">
-        <video src="assets/video-fastwolf.mp4" poster="assets/hero-moto.jpg" controls playsinline preload="metadata"></video>
+  <div class="switch" role="group" aria-label="Ver antes o después">
+    <button id="b-antes" class="on">Antes</button>
+    <button id="b-desp">Con FastWolf</button>
+  </div>
+
+  <div class="escaparate">
+
+    <!-- 1 · la identidad -->
+    <div class="pieza-demo">
+      <span class="rot">La identidad</span>
+      <div class="capa antes foto">
+        <img src="assets/trabajos/torton-ad/antes-tarjeta.webp" alt="Tarjeta antigua de El Tortón: fondo amarillo plano, logo en óvalo, tipografía de sistema" loading="lazy">
+        <p class="pie">Su tarjeta más antigua: logo en óvalo, tipografía de sistema, iconos de redes pegados desde internet.</p>
       </div>
-      <div class="gal">
-        <img src="assets/mascota.jpg" alt="Diseño de personaje FastWolf">
-        <img src="assets/corriendo.jpg" alt="Mascota FastWolf corriendo en pista de neón">
-        <img src="assets/post-marketplace.jpg" alt="Pieza publicitaria del paquete FastWolf" style="grid-column:1/-1;">
+      <div class="capa despues foto">
+        <img src="assets/trabajos/torton-ad/despues-logo.webp" alt="Página del manual: el logo de El Tortón con sus versiones oficiales" loading="lazy">
+        <p class="pie"><b>El logo se mantiene.</b> Diez años de reconocimiento no se tiran a la basura: se ordena. Versiones oficiales, fondos permitidos y reglas de uso.</p>
       </div>
     </div>
+
+    <!-- 2 · el color -->
+    <div class="pieza-demo">
+      <span class="rot">El color</span>
+      <div class="capa antes foto">
+        <img src="assets/trabajos/torton-ad/antes-color.webp" alt="Tarjeta más reciente de El Tortón, con un amarillo distinto al de la anterior" loading="lazy">
+        <p class="pie">La tarjeta siguiente ya se veía mejor — pero con otro amarillo. Cada pieza salía de un color distinto porque no había ninguno escrito.</p>
+      </div>
+      <div class="capa despues foto">
+        <img src="assets/trabajos/torton-ad/despues-paleta.webp" alt="Página del manual con la paleta Mostaza y Cacao y sus códigos" loading="lazy">
+        <p class="pie"><b>Mostaza &amp; Cacao.</b> Cuatro colores con nombre, código y proporción de uso, extraídos de lo que el negocio ya usaba. Ahora la imprenta y el diseñador leen lo mismo.</p>
+      </div>
+    </div>
+
+    <!-- 3 · el sistema -->
+    <div class="pieza-demo">
+      <span class="rot">El sistema</span>
+      <div class="capa antes">
+        <p class="t1">Cada pieza, desde cero</p>
+        <p class="t2">Sin manual, sin componentes</p>
+        <div class="cuerpo">
+          <div class="caja">“¿Qué amarillo era?”</div>
+          <div class="caja">“¿Qué letra usamos la vez pasada?”</div>
+          <div class="caja">“Mándame el logo otra vez, en grande.”</div>
+          <p style="margin:.7rem 0 0">Las mismas tres preguntas cada vez que hay que hacer algo nuevo.</p>
+        </div>
+      </div>
+      <div class="capa despues foto">
+        <img src="assets/trabajos/torton-ad/despues-sistema.webp" alt="Página del manual con los componentes del sistema web de El Tortón" loading="lazy">
+        <p class="pie"><b>Un sistema, no un archivo.</b> Botones, formularios, tarjetas y tono de voz definidos: cualquier pieza nueva sale sola, sin volver a preguntar.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="pie-demo">Caso real de <a href="casos/torton.html">El Tortón AQP</a>, pastelería en Arequipa. Las dos primeras imágenes son fotos de sus tarjetas anteriores; las otras, páginas del manual que le entregamos.</p>
+
+</section>
+<!-- ============ ESCENA 03 ============ -->
+<section id="piezas">
+  <p class="eyebrow">Qué incluye</p>
+  <h2>Seis cosas cambian de sitio. Todas a la vez.</h2>
+  <p class="lede">Cambiar solo el logo no mueve la aguja: lo que convence es que la tarjeta, el brochure, la web y el feed digan lo mismo. Por eso el paquete es completo o no es.</p>
+
+  <div class="piezas">
+    <div class="p">
+      <span class="n">01</span>
+      <h3>Manual de marca + logo</h3>
+      <p>Concepto, logo y todas sus variantes, paleta, tipografías, usos correctos e incorrectos.</p>
+      <p class="det">PDF 8–12 páginas · SVG, PNG y JPG · archivos editables</p>
+    </div>
+    <div class="p">
+      <span class="n">02</span>
+      <h3>Brochure</h3>
+      <p>Díptico o tríptico A4 con quiénes son, qué venden y por qué a ustedes.</p>
+      <p class="det">PDF de imprenta CMYK 300 dpi · versión ligera para WhatsApp</p>
+    </div>
+    <div class="p">
+      <span class="n">03</span>
+      <h3>Tarjetas</h3>
+      <p>9 × 5 cm, tiro y retiro, con QR opcional directo a tu WhatsApp.</p>
+      <p class="det">PDF listo para imprenta · PNG de vista previa</p>
+    </div>
+    <div class="p">
+      <span class="n">04</span>
+      <h3>Página web</h3>
+      <p>Una página que responde sola las preguntas que hoy contestas una por una.</p>
+      <p class="det">Hasta 5 secciones · galería de 8 fotos · WhatsApp y mapa</p>
+    </div>
+    <div class="p">
+      <span class="n">05</span>
+      <h3>Contenido para redes</h3>
+      <p>Tres publicaciones de Instagram diseñadas, o un video publicitario vertical. Eliges tú.</p>
+      <p class="det">3 posts 1080 × 1350 · o 1 video de 20–30 s</p>
+    </div>
+    <div class="p destacada">
+      <span class="sello">Incluido</span>
+      <span class="n">06</span>
+      <h3>Lanzamiento con publicidad</h3>
+      <p>Tres días de anuncios en Facebook e Instagram segmentados a tu zona, con la inversión pagada por nosotros, más un informe de alcance de una página.</p>
+      <p class="det">3 días · tu distrito · informe con resultados</p>
+    </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="alt" id="faq">
-  <div class="wrap">
-    <div class="kicker">Preguntas frecuentes</div>
-    <h2>Lo que todos preguntan</h2>
-    <details open>
-      <summary>¿Y si no me gusta el logo?</summary>
-      <p>Por eso la primera entrega trae 2 o 3 propuestas distintas, no una sola. Eliges la que más te guste y la afinamos juntos con las 2 rondas de cambios. Nadie se queda con algo que no le gusta.</p>
-    </details>
-    <details>
-      <summary>¿Qué necesito darte para empezar?</summary>
-      <p>Un cuestionario corto (14 preguntas, 10 minutos), tus datos de contacto y las fotos que tengas de tu negocio. Si no tienes fotos, usamos imágenes de banco con licencia comercial.</p>
-    </details>
-    <details>
-      <summary>¿La web incluye dominio y hosting?</summary>
-      <p>Tu página se publica gratis con un subdominio (tunegocio.netlify.app). Si quieres tu propio .com, te lo cotizamos aparte y queda a tu nombre — siempre.</p>
-    </details>
-    <details>
-      <summary>¿Cómo se paga?</summary>
-      <p>50% al inicio (S/ 250) y 50% contra entrega, por Yape, Plin o transferencia. Las primeras propuestas las ves en 2 días, así que rapidito sabes con quién trabajas.</p>
-    </details>
+<!-- ============ ESCENA 04 ============ -->
+<section id="dias">
+  <p class="eyebrow">Cómo trabajamos</p>
+  <h2>Siete días, contados.</h2>
+  <div class="dias">
+    <div class="dia"><span class="d">0<small>Arranque</small></span><div><h4>Un cuestionario de 10 minutos</h4><p>14 preguntas sobre tu negocio, tus clientes y lo que quieres transmitir. Adelanto del 50% y empezamos.</p></div></div>
+    <div class="dia"><span class="d">2<small>Propuestas</small></span><div><h4>Ves 2 o 3 logos distintos</h4><p>No apostamos todo a una sola idea. Eliges la dirección que más se parece a tu negocio.</p></div></div>
+    <div class="dia"><span class="d">3–6<small>Afinado</small></span><div><h4>Dos rondas de cambios</h4><p>Ajustamos hasta que quede como lo quieres, y con la dirección elegida se diseña todo lo demás.</p></div></div>
+    <div class="dia"><span class="d">7–10<small>Entrega</small></span><div><h4>La carpeta completa</h4><p>Manual, logo en todos sus formatos, brochure, tarjetas, la web publicada y tu contenido. Todo editable y a tu nombre.</p></div></div>
+    <div class="dia final"><span class="d">+1<small>Al aire</small></span><div><h4>Tu marca sale a la calle</h4><p>Arrancan los tres días de publicidad en tu zona y, al terminar, recibes el informe de alcance.</p></div></div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="final">
-  <div class="wrap">
-    <h2>¿Empezamos hoy?</h2>
-    <a class="btn-wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20empezar%20mi%20paquete%20de%20marca" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.9 14.9 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
-      WhatsApp +51 957 577 494
+<!-- ============ ESCENA 05 ============ -->
+<section>
+  <p class="eyebrow">Trabajos</p>
+  <h2>Este cambio ya lo hicimos siete veces.</h2>
+  <p class="lede">Pastelería, inmobiliaria, empanadas artesanales, ropa universitaria, servicio de dron y equipos industriales. Cada una con su manual, su logo completo y, cuando el proyecto lo pedía, su web publicada.</p>
+
+  <div class="casos">
+    <a class="caso" href="trabajos.html">
+      <div class="th"><img src="assets/trabajos/torton-manual.webp" alt="Sistema de marca de El Tortón AQP" loading="lazy"></div>
+      <div class="ft"><h3>El Tortón AQP</h3><p class="m"><b>Pastelería</b> · Arequipa 2026</p></div>
+    </a>
+    <a class="caso" href="trabajos.html">
+      <div class="th"><img src="assets/trabajos/oasis-manual.webp" alt="Manual de marca de Oasis Urbano" loading="lazy"></div>
+      <div class="ft"><h3>Oasis Urbano</h3><p class="m"><b>Inmobiliaria</b> · Chilina 2026</p></div>
+    </a>
+    <a class="caso" href="trabajos.html">
+      <div class="th"><img src="assets/trabajos/emparada-web.webp" alt="Web de La Emparada" loading="lazy"></div>
+      <div class="ft"><h3>La Emparada</h3><p class="m"><b>Marca + web</b> · Arequipa 2026</p></div>
+    </a>
+    <a class="caso" href="trabajos.html">
+      <div class="th"><img src="assets/trabajos/agustreet-manual.webp" alt="Manual de marca de Agustreet" loading="lazy"></div>
+      <div class="ft"><h3>Agustreet</h3><p class="m"><b>Ropa</b> · UNSA 2026</p></div>
+    </a>
+    <a class="caso" href="trabajos.html">
+      <div class="th"><img src="assets/trabajos/nadir-web.webp" alt="Web de NADIR Geomática Aérea" loading="lazy"></div>
+      <div class="ft"><h3>NADIR</h3><p class="m"><b>Geomática aérea</b> · 2026</p></div>
+    </a>
+    <a class="caso" href="trabajos.html">
+      <div class="th"><img src="assets/trabajos/eficor-web.webp" alt="Web de producto de EFICOR" loading="lazy"></div>
+      <div class="ft"><h3>EFICOR</h3><p class="m"><b>Industrial</b> · Perú 2026</p></div>
     </a>
   </div>
+
+  <a class="vermas" href="trabajos.html">Ver los siete trabajos con su paleta y sus entregables →</a>
+
+  <div class="propia">
+    <video src="assets/video-fastwolf.mp4" poster="assets/hero-moto.jpg" autoplay muted loop playsinline></video>
+    <div>
+      <h3>Y nuestra propia marca salió de aquí.</h3>
+      <p>El lobo, el logo, este sitio y este video se diseñaron con el mismo paquete que te ofrecemos. Si el proceso no funcionara, se notaría primero en casa.</p>
+    </div>
+  </div>
+
 </section>
 
-<footer>
-  <div class="wrap">
-    <img src="assets/logo.png" alt="FastWolf">
-    <p>FastWolf — Diseño de Marca y Web · Perú<br>WhatsApp +51 957 577 494 · © 2026</p>
+<!-- ============ ESCENA 06 ============ -->
+<section id="promo">
+  <p class="eyebrow">El precio</p>
+  <h2>¿Y cuánto cuesta todo esto?</h2>
+  <div class="promo">
+    <div class="top">
+      <span class="sello">Promoción de lanzamiento</span>
+      <h3>Menos de lo que cuesta hacerlo por partes. Bastante menos.</h3>
+      <p>Estamos armando nuestros primeros casos, así que el paquete completo está a precio de promoción — y tomamos <strong>un negocio por semana</strong> para entregar a tiempo. Es un precio cerrado: lo acordamos por escrito antes de empezar y no se mueve. Te digo el monto exacto por WhatsApp, en el primer mensaje.</p>
+    </div>
+    <ul>
+      <li><b>Precio cerrado</b>Sin costos que aparecen a mitad del proyecto.</li>
+      <li><b>50% y 50%</b>Mitad al inicio, mitad contra entrega. Yape, Plin o transferencia.</li>
+      <li><b>2 rondas incluidas</b>Sobre la propuesta que elijas.</li>
+      <li><b>Todo a tu nombre</b>Archivos editables incluidos, sin ataduras.</li>
+    </ul>
+    <div class="cierre">
+      <p>Un mensaje y te paso el monto, qué incluye y qué día lo tienes listo.</p>
+      <a class="cta" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20el%20precio%20de%20promoci%C3%B3n%20y%20la%20fecha%20de%20entrega%20del%20paquete%20completo.%20%5BC6%5D">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .2-.4.4.4 0 0 0 0-.4L9.6 8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8 5 5 0 0 0 3 .6 2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.2-.3-.3-.6-.4Z"/></svg>
+        Pedir el precio ahora
+      </a>
+    </div>
   </div>
+</section>
+
+<!-- ============ ESCENA 07 ============ -->
+<section class="final-sec">
+  <h2>Tu negocio ya está listo.<br>Falta que se note.</h2>
+  <p>Escríbeme y en diez minutos sabes qué recibes, cuánto cuesta y qué día lo tienes.</p>
+  <a class="cta" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20arrancar%20mi%20paquete%20de%20marca%20esta%20semana.%20%5BC7%5D">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .2-.4.4.4 0 0 0 0-.4L9.6 8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8 5 5 0 0 0 3 .6 2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.2-.3-.3-.6-.4Z"/></svg>
+    WhatsApp +51 957 577 494
+  </a>
+</section>
+
+</div>
+
+<footer>
+  <span>FastWolf — Diseño de marca y web · Perú</span>
+  <span>WhatsApp +51 957 577 494</span>
+  <span>Arequipa · Perú</span>
 </footer>
 
-<a class="float-wsp" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20quiero%20informaci%C3%B3n%20del%20paquete%20de%20S%2F%20500" target="_blank" rel="noopener" aria-label="Escríbenos al WhatsApp">
-  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1 2.7 11.4 11.4 0 0 0 4.4 3.9 14.9 14.9 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+<a class="wa" href="https://wa.me/51957577494?text=Hola%20FastWolf%2C%20vi%20la%20web%20y%20quiero%20informaci%C3%B3n%20del%20paquete%20completo.%20%5BC-flot%5D" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.5a1.8 1.8 0 0 0 .2-.4.4.4 0 0 0 0-.4L9.6 8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8 5 5 0 0 0 3 .6 2.5 2.5 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.2-.3-.3-.6-.4Z"/></svg>
 </a>
 
+<script>
+var b=document.body;
+var a1=document.getElementById('b-antes'),a2=document.getElementById('b-desp');
+a1.addEventListener('click',function(){b.classList.remove('despues');a1.classList.add('on');a2.classList.remove('on')});
+a2.addEventListener('click',function(){b.classList.add('despues');a2.classList.add('on');a1.classList.remove('on')});
+</script>
 </body>
 </html>
